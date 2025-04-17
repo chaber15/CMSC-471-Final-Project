@@ -1,27 +1,20 @@
 const width = 2000;
 const height = 750;
 
-function removeAfterEqual(str) {
+function cleanName(str) {
+    if (!str) return "";
     const index = str.indexOf('<');
-    return index === -1 ? str : str.slice(0, index);
-}
-
-function removeHomeOrAwayWin(str) {
-    if (str === "Home win" || str === "Away win") {
-        return "";
-    }
-    return str;
+    let cleaned = index === -1 ? str : str.slice(0, index);
+    return (cleaned === "Home win" || cleaned === "Away win") ? "" : cleaned;
 }
 
 function init() {
     d3.json("random_forest.json")
         .then(data => {
-            const firstChild = data[0].children[0];  // "tree_0"
-            const root = d3.hierarchy(firstChild);
+            const rootData = data[0].children[0]; // Top level is probably already tree_0
+            const root = d3.hierarchy(rootData);
 
-            // Make the tree smaller inside the large canvas
-            const treeLayout = d3.tree().size([700, 600]); // Smaller tree layout
-
+            const treeLayout = d3.tree().size([700, 600]);
             treeLayout(root);
 
             const svg = d3.select("#vis").append("svg")
@@ -29,10 +22,10 @@ function init() {
                 .attr("height", height);
 
             const g = svg.append("g")
-                .attr("transform", "translate(100,100)"); // Center the smaller tree a bit
+                .attr("transform", "translate(100,100)");
 
-            // Draw links
-            g.selectAll(".link")
+            // Add links (initially hidden)
+            const link = g.selectAll(".link")
                 .data(root.links())
                 .enter().append("line")
                 .attr("class", "link")
@@ -41,42 +34,59 @@ function init() {
                 .attr("x2", d => d.target.x)
                 .attr("y2", d => d.target.y)
                 .attr("stroke", "#ccc")
-                .attr("stroke-width", 2);
+                .attr("stroke-width", 2)
+                .style("opacity", 0); // Initially hidden
 
-            // Draw nodes
-            const nodes = g.selectAll(".node")
+            // Add nodes (initially hidden)
+            const node = g.selectAll(".node")
                 .data(root.descendants())
                 .enter().append("g")
                 .attr("class", "node")
-                .attr("transform", d => `translate(${d.x},${d.y})`);
+                .attr("transform", d => `translate(${d.x},${d.y})`)
+                .style("opacity", 0); // Initially hidden
 
-            nodes.append("circle")
+            node.append("circle")
                 .attr("r", 8)
                 .attr("fill", d => {
                     if (d.data.name === "Home win") return "#69b3a2";
                     else if (d.data.name === "Away win") return "#ff6347";
-                    else return "#ADD8E6"; // default
+                    else return "#ADD8E6";
                 });
 
-            nodes.append("text")
+            node.append("text")
                 .attr("dy", -10)
                 .attr("text-anchor", "middle")
-                .text(d => removeHomeOrAwayWin(removeAfterEqual(d.data.name)))
+                .text(d => cleanName(d.data.name))
                 .style("font-size", "8px");
 
-            // Add Legend
-            const legend = svg.append("g")
-                .attr("transform", "translate(35, 50)"); // Position the legend
+            // Animate layer by layer
+            const maxDepth = d3.max(root.descendants(), d => d.depth);
+            const time = 1500;
+            for (let depth = 0; depth <= maxDepth; depth++) {
+                setTimeout(() => {
+                    node.filter(d => d.depth === depth)
+                        .transition()
+                        .duration(time)
+                        .style("opacity", 1);
 
-            // Home win legend
+                    link.filter(d => d.target.depth === depth)
+                        .transition()
+                        .duration(time)
+                        .style("opacity", 1);
+                }, depth * time);
+            }
+
+            // Legend
+            const legend = svg.append("g")
+                .attr("transform", "translate(35, 50)");
+
             legend.append("rect")
                 .attr("x", 0)
                 .attr("y", 0)
                 .attr("width", 20)
                 .attr("height", 20)
                 .attr("fill", "#69b3a2")
-                .attr("stroke", "#000") // Add border for visibility
-                .attr("stroke-width", 1); // Border width
+                .attr("stroke", "#000");
 
             legend.append("text")
                 .attr("x", 30)
@@ -84,15 +94,13 @@ function init() {
                 .text("Home win")
                 .style("font-size", "12px");
 
-            // Away win legend
             legend.append("rect")
                 .attr("x", 0)
                 .attr("y", 30)
                 .attr("width", 20)
                 .attr("height", 20)
                 .attr("fill", "#ff6347")
-                .attr("stroke", "#000") // Add border for visibility
-                .attr("stroke-width", 1); // Border width
+                .attr("stroke", "#000");
 
             legend.append("text")
                 .attr("x", 30)
