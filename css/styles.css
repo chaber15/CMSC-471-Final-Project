@@ -1,18 +1,26 @@
 
 * {
     font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0px auto;
     line-height: 1.8;
 }
 
 .container {
-    max-width: 2500px;
+    max-width: 3000px;
     margin: 2rem auto;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 2rem;
+    background-color: #f9f9f9; /* optional */
 }
 
-#vis svg {
-    margin: 2rem 0;
-    border: 1px solid #ccc;
+#vis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
 }

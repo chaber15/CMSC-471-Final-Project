@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.tree import _tree
 
-def train_and_export_forest(depth=5, n_trees=3, csv_path='nfl_games_with_rolling_stats.csv'):
+def train_and_export_forest(depth=3, n_trees=5, csv_path='nfl_games_with_rolling_stats.csv'):
     def remove_rolling(s):
         return s.replace('_rolling', '') if s not in ["away_score_rolling", "home_score_rolling"] else s
 
@@ -70,3 +70,5 @@ def train_and_export_forest(depth=5, n_trees=3, csv_path='nfl_games_with_rolling
     # Save to file
     with open('random_forest.json', 'w') as f:
         json.dump(cleaned, f, indent=2)
+
+train_and_export_forest()

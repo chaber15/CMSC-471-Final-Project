@@ -1,4 +1,4 @@
-const width = 2000;
+const width = 1500;
 const height = 750;
 
 function cleanName(str) {
@@ -11,20 +11,16 @@ function cleanName(str) {
 function init() {
     d3.json("random_forest.json")
         .then(data => {
-            const rootData = data[0].children[0]; // Top level node
-            const root = d3.hierarchy(rootData);
-
-            const treeLayout = d3.tree().size([700, 600]);
-            treeLayout(root);
+            const trees = data[0].children;
+            const numTrees = trees.length;
+            const maxTreeWidth = width / numTrees - 50; // Give 50px margin
+            const treeHeight = 600;
 
             const svg = d3.select("#vis").append("svg")
                 .attr("width", width)
                 .attr("height", height);
 
-            const g = svg.append("g")
-                .attr("transform", "translate(100,100)");
-
-            // Tooltip div (hidden by default)
+            // Tooltip
             const tooltip = d3.select("#vis")
                 .append("div")
                 .style("position", "absolute")
@@ -36,70 +32,79 @@ function init() {
                 .style("font-size", "12px")
                 .style("opacity", 0);
 
-            // Add links
-            const link = g.selectAll(".link")
-                .data(root.links())
-                .enter().append("line")
-                .attr("class", "link")
-                .attr("x1", d => d.source.x)
-                .attr("y1", d => d.source.y)
-                .attr("x2", d => d.target.x)
-                .attr("y2", d => d.target.y)
-                .attr("stroke", "#ccc")
-                .attr("stroke-width", 2)
-                .style("opacity", 0);
+            trees.forEach((treeData, index) => {
+                const root = d3.hierarchy(treeData);
+                const treeLayout = d3.tree().size([maxTreeWidth, treeHeight]);
+                treeLayout(root);
 
-            // Add nodes
-            const node = g.selectAll(".node")
-                .data(root.descendants())
-                .enter().append("g")
-                .attr("class", "node")
-                .attr("transform", d => `translate(${d.x},${d.y})`)
-                .style("opacity", 0);
+                const xOffset = (index * width) / numTrees + 25; // 25 for side padding
 
-            node.append("circle")
-                .attr("r", 8)
-                .attr("fill", d => {
-                    if (d.data.name === "Home win") return "#69b3a2";
-                    else if (d.data.name === "Away win") return "#ff6347";
-                    else return "#ADD8E6";
-                })
-                .on("mouseover", function (event, d) {
-                    tooltip.transition().duration(200).style("opacity", 0.9);
-                    tooltip.html(d.data.name)
-                        .style("left", `${event.pageX + 10}px`)
-                        .style("top", `${event.pageY - 28}px`);
-                })
-                .on("mouseout", () => {
-                    tooltip.transition().duration(300).style("opacity", 0);
-                });
+                const g = svg.append("g")
+                    .attr("transform", `translate(${xOffset}, 100)`);
 
-            node.append("text")
-                .attr("dy", -10)
-                .attr("text-anchor", "middle")
-                .text(d => cleanName(d.data.name))
-                .style("font-size", "8px");
+                const link = g.selectAll(".link")
+                    .data(root.links())
+                    .enter().append("line")
+                    .attr("class", "link")
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y)
+                    .attr("stroke", "#ccc")
+                    .attr("stroke-width", 2)
+                    .style("opacity", 0);
 
-            // Animate tree depth-by-depth
-            const maxDepth = d3.max(root.descendants(), d => d.depth);
-            const timing = 1500;
-            for (let depth = 0; depth <= maxDepth; depth++) {
-                setTimeout(() => {
-                    node.filter(d => d.depth === depth)
-                        .transition()
-                        .duration(timing)
-                        .style("opacity", 1);
+                const node = g.selectAll(".node")
+                    .data(root.descendants())
+                    .enter().append("g")
+                    .attr("class", "node")
+                    .attr("transform", d => `translate(${d.x},${d.y})`)
+                    .style("opacity", 0);
 
-                    link.filter(d => d.target.depth === depth)
-                        .transition()
-                        .duration(timing)
-                        .style("opacity", 1);
-                }, depth * timing);
-            }
+                node.append("circle")
+                    .attr("r", 8)
+                    .attr("fill", d => {
+                        if (d.data.name === "Home win") return "#69b3a2";
+                        else if (d.data.name === "Away win") return "#ff6347";
+                        else return "#ADD8E6";
+                    })
+                    .on("mouseover", function (event, d) {
+                        tooltip.transition().duration(200).style("opacity", 0.9);
+                        tooltip.html(d.data.name)
+                            .style("left", `${event.pageX + 10}px`)
+                            .style("top", `${event.pageY - 28}px`);
+                    })
+                    .on("mouseout", () => {
+                        tooltip.transition().duration(300).style("opacity", 0);
+                    });
+
+                node.append("text")
+                    .attr("dy", -10)
+                    .attr("text-anchor", "middle")
+                    .text(d => cleanName(d.data.name))
+                    .style("font-size", "8px");
+
+                // Animate depth-by-depth
+                const maxDepth = d3.max(root.descendants(), d => d.depth);
+                const timing = 1500;
+                for (let depth = 0; depth <= maxDepth; depth++) {
+                    setTimeout(() => {
+                        node.filter(d => d.depth === depth)
+                            .transition()
+                            .duration(timing)
+                            .style("opacity", 1);
+
+                        link.filter(d => d.target.depth === depth)
+                            .transition()
+                            .duration(timing)
+                            .style("opacity", 1);
+                    }, depth * timing);
+                }
+            });
 
             // Add legend
             const legend = svg.append("g")
-                .attr("transform", "translate(35, 50)");
+                .attr("transform", "translate(0, 0)");
 
             legend.append("rect")
                 .attr("x", 0)
@@ -131,6 +136,5 @@ function init() {
         })
         .catch(error => console.error('Error loading random_forest.json:', error));
 }
-
 
 window.addEventListener('load', init);
