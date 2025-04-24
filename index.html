@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container"> 
-        <input type="range" id="yearSlider" min="1" max="10" value="5" step="1" list="tickmarks" oninput="getData(this.value)">
+        <input type="range" id="yearSlider" min="1" max="10" step="1" list="tickmarks" onchange=getData(this.value)>
         <datalist id="tickmarks">
             <option value="1" label="1"></option>
             <option value="2" label="2"></option>
@@ -21,7 +20,11 @@
             <option value="9" label="9"></option>
             <option value="10"label="10"></option>
         </datalist>
-        <button id="btn">New Trees</button>
+   
+    <div class="container"> 
+      
+
+
         <h1>Final Project Mockup</h1>
         <div id="vis" style="display: flex; flex-wrap: wrap; gap: 2rem;"></div>
     </div>

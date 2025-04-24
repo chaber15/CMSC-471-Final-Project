@@ -25,6 +25,10 @@
     width: 100%;
 }
 
+#yearSlider{
+    width: 100%;
+}
+
 #tickmarks {
     display: flex;
     justify-content: space-between;

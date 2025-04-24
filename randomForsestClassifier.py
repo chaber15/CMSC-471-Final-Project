@@ -71,4 +71,6 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='nfl_games_with_rollin
     with open('random_forest.json', 'w') as f:
         json.dump(cleaned, f, indent=2)
 
+    return cleaned
+
 train_and_export_forest()
