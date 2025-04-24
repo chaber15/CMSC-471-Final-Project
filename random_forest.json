@@ -298,6 +298,78 @@
             ]
           }
         ]
+      },
+      {
+        "name": "tree_5",
+        "children": [
+          {
+            "name": "home_first_downs <= 17.83",
+            "children": [
+              {
+                "name": "away_yards <= 344.33",
+                "children": [
+                  {
+                    "name": "away_drives <= 10.83",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Away win",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "name": "Home win",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_6",
+        "children": [
+          {
+            "name": "away_score_rolling <= 18.83",
+            "children": [
+              {
+                "name": "Home win",
+                "value": 1
+              },
+              {
+                "name": "home_rush_att <= 30.50",
+                "children": [
+                  {
+                    "name": "home_yards <= 370.83",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Home win",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

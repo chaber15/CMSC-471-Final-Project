@@ -1,6 +1,22 @@
 const width = 1500;
 const height = 750;
 
+
+async function getData(n) {
+    const url = `http://localhost:5000/train?numTrees=${n}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+  
+      const json = await response.json();
+      console.log(json);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
 function cleanName(str) {
     if (!str) return "";
     const index = str.indexOf('<');
@@ -9,6 +25,10 @@ function cleanName(str) {
 }
 
 function init() {
+
+    
+    
+    
     d3.json("random_forest.json")
         .then(data => {
             const trees = data[0].children;
@@ -137,4 +157,10 @@ function init() {
         .catch(error => console.error('Error loading random_forest.json:', error));
 }
 
+
 window.addEventListener('load', init);
+
+const treesBtn = document.getElementById('btn');
+treesBtn.addEventListener('click', () => getData(1)); 
+
+

@@ -24,3 +24,20 @@
     gap: 2rem;
     width: 100%;
 }
+
+#tickmarks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+  }
+  
+  #tickmarks option {
+   
+    height: 20px;
+    background: transparent;
+    color: black;
+    font-size: 12px;
+  }
+
+
+
