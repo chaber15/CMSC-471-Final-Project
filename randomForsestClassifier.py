@@ -59,6 +59,7 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='nfl_games_with_rollin
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
     print(f'Accuracy: {accuracy_score(y_test, y_pred):.3f}')
+    
 
     # Convert and clean trees
     forest_json = [{
@@ -71,6 +72,5 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='nfl_games_with_rollin
     with open('random_forest.json', 'w') as f:
         json.dump(cleaned, f, indent=2)
 
-    return cleaned
 
 train_and_export_forest()

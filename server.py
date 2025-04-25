@@ -12,12 +12,15 @@ CORS(app)
 class GetTrees(Resource):
     def get(self):
         numTrees = request.args.get('numTrees')
+        depth = request.args.get('depth')
+
         
-        trees =  train_and_export_forest(n_trees=int(numTrees))
+        
+        trees =  train_and_export_forest(n_trees=int(numTrees), depth=int(depth))
 
         return {'trees': trees}
 
 api.add_resource(GetTrees, '/train')
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

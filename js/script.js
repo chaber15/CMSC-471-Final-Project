@@ -1,8 +1,10 @@
 const width = 1500;
 const height = 750;
+let homeWins = 0;
+let awayWins = 0;
 
-async function getData(n) {
-  const url = `http://localhost:5000/train?numTrees=${n}`;
+async function getData(n, d) {
+  const url = `http://localhost:5000/train?numTrees=${n}&depth=${d}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -29,42 +31,55 @@ function init() {
     localStorage.setItem("numTrees", 5);
   }
 
+  if (localStorage.getItem("depth") === null) {
+    localStorage.setItem("depth", 4);
+  }
+
   d3.json("random_forest.json")
     .then((data) => {
       const trees = data[0].children;
-      const numTrees = trees.length;
-      const maxTreeWidth = width / numTrees - 50; // Give 50px margin
-      const treeHeight = 600;
+      // const numTrees = trees.length;
+      const maxTreeWidth = 900;
+      const treeHeight = 650;
 
-      const svg = d3
-        .select("#vis")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+      // Clear any previous trees
+      d3.select("#vis").html("");
 
-      // Tooltip
-      const tooltip = d3
-        .select("#vis")
-        .append("div")
-        .style("position", "absolute")
-        .style("background", "#fff")
-        .style("border", "1px solid #999")
-        .style("padding", "5px 8px")
-        .style("border-radius", "6px")
-        .style("pointer-events", "none")
-        .style("font-size", "12px")
-        .style("opacity", 0);
-
-      trees.forEach((treeData, index) => {
+      trees.forEach((treeData) => {
         const root = d3.hierarchy(treeData);
-        const treeLayout = d3.tree().size([maxTreeWidth, treeHeight]);
+        const treeLayout = d3.tree().size([maxTreeWidth - 40, treeHeight]);
         treeLayout(root);
 
-        const xOffset = (index * width) / numTrees + 25; // 25 for side padding
+        // Create a container div for each tree
+        const treeContainer = d3
+          .select("#vis")
+          .append("div")
+          .style("display", "inline-block")
+          .style("margin", "10px")
+          .style("vertical-align", "top")
+          .style("border", "1px solid #ddd")
+          .style("padding", "10px")
+          .style("background", "#f9f9f9")
+          .style("border-radius", "8px");
 
-        const g = svg
-          .append("g")
-          .attr("transform", `translate(${xOffset}, 100)`);
+        const svg = treeContainer
+          .append("svg")
+          .attr("width", maxTreeWidth)
+          .attr("height", treeHeight + 150);
+
+        // Tooltip
+        const tooltip = treeContainer
+          .append("div")
+          .style("position", "absolute")
+          .style("background", "#fff")
+          .style("border", "1px solid #999")
+          .style("padding", "5px 8px")
+          .style("border-radius", "6px")
+          .style("pointer-events", "none")
+          .style("font-size", "12px")
+          .style("opacity", 0);
+
+        const g = svg.append("g").attr("transform", `translate(20, 100)`);
 
         const link = g
           .selectAll(".link")
@@ -77,7 +92,7 @@ function init() {
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y)
           .attr("stroke", "#ccc")
-          .attr("stroke-width", 2)
+          .attr("stroke-width", 3)
           .style("opacity", 0);
 
         const node = g
@@ -91,11 +106,21 @@ function init() {
 
         node
           .append("circle")
-          .attr("r", 8)
+          .attr("r", 13)
           .attr("fill", (d) => {
-            if (d.data.name === "Home win") return "#69b3a2";
-            else if (d.data.name === "Away win") return "#ff6347";
-            else return "#ADD8E6";
+            if (d.data.name === "Home win") {
+              homeWins++;
+              document.getElementById(
+                "home"
+              ).innerHTML = `<strong>Home Wins:</strong> ${homeWins}`;
+              return "#69b3a2";
+            } else if (d.data.name === "Away win") {
+              awayWins++;
+              document.getElementById(
+                "away"
+              ).innerHTML = `<strong>Away Wins:</strong> ${awayWins}`;
+              return "#ff6347";
+            } else return "#ADD8E6";
           })
           .on("mouseover", function (event, d) {
             tooltip.transition().duration(200).style("opacity", 0.9);
@@ -110,10 +135,10 @@ function init() {
 
         node
           .append("text")
-          .attr("dy", -10)
+          .attr("dy", -20)
           .attr("text-anchor", "middle")
           .text((d) => cleanName(d.data.name))
-          .style("font-size", "8px");
+          .style("font-size", "15px");
 
         // Animate depth-by-depth
         const maxDepth = d3.max(root.descendants(), (d) => d.depth);
@@ -135,40 +160,23 @@ function init() {
         }
       });
 
-      // Add legend
-      const legend = svg.append("g").attr("transform", "translate(0, 0)");
+      // Add legend only once
+      const legend = d3
+        .select("#vis")
+        .append("div")
+        .style("margin-top", "20px");
 
       legend
-        .append("rect")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("width", 20)
-        .attr("height", 20)
-        .attr("fill", "#69b3a2")
-        .attr("stroke", "#000");
+        .append("div")
+        .html(
+          `<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`
+        );
 
       legend
-        .append("text")
-        .attr("x", 30)
-        .attr("y", 15)
-        .text("Home win")
-        .style("font-size", "12px");
-
-      legend
-        .append("rect")
-        .attr("x", 0)
-        .attr("y", 30)
-        .attr("width", 20)
-        .attr("height", 20)
-        .attr("fill", "#ff6347")
-        .attr("stroke", "#000");
-
-      legend
-        .append("text")
-        .attr("x", 30)
-        .attr("y", 45)
-        .text("Away win")
-        .style("font-size", "12px");
+        .append("div")
+        .html(
+          `<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`
+        );
     })
     .catch((error) =>
       console.error("Error loading random_forest.json:", error)
@@ -178,12 +186,19 @@ function init() {
 document.addEventListener("load", init());
 
 document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.getElementById("yearSlider");
-  slider.value = localStorage.getItem("numTrees");
+  const nTrees = document.getElementById("yearSlider");
+  const depth = document.getElementById("depthSlider");
+  nTrees.value = localStorage.getItem("numTrees");
+  depth.value = localStorage.getItem("depth");
 
-  slider.addEventListener("change", function (event) {
+  nTrees.addEventListener("change", function (event) {
     localStorage.setItem("numTrees", event.target.value);
-
-    // getData(localStorage.getItem('numTrees'));
+    getData(nTrees.value, depth.value);
   });
+
+  depth.addEventListener("change", function (event) {
+    localStorage.setItem("depth", event.target.value);
+    getData(nTrees.value, depth.value);
+  });
+  document.getElementById("away").innerHTML = `<strong>${awayWins}</strong>`;
 });
