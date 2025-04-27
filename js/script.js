@@ -12,7 +12,7 @@ function cleanName(str) {
 
 function renderSingleTree(treeData) {
   const maxTreeWidth = 1700;
-  const treeHeight = 650;
+  const treeHeight = 600;
   const timing = 1500;
 
   d3.select("#vis").html(""); // Clear previous tree
@@ -24,7 +24,7 @@ function renderSingleTree(treeData) {
   const svg = d3.select("#vis")
     .append("svg")
     .attr("width", maxTreeWidth)
-    .attr("height", treeHeight + 150);
+    .attr("height", treeHeight + 125);
 
   const tooltip = d3.select("#vis")
     .append("div")
@@ -65,12 +65,8 @@ function renderSingleTree(treeData) {
     .attr("r", 13)
     .attr("fill", d => {
       if (d.data.name === "Home win") {
-        homeWins++;
-        document.getElementById("home").innerHTML = `<strong>Home Wins:</strong> ${homeWins}`;
         return "#69b3a2";
       } else if (d.data.name === "Away win") {
-        awayWins++;
-        document.getElementById("away").innerHTML = `<strong>Away Wins:</strong> ${awayWins}`;
         return "#ff6347";
       } else return "#ADD8E6";
     })
@@ -86,6 +82,9 @@ function renderSingleTree(treeData) {
     .attr("dy", -20)
     .attr("text-anchor", "middle")
     .text(d => cleanName(d.data.name))
+    .style("fill", "grey")
+    .style("font-weight", "bold")
+
     .style("font-size", "15px");
 
   const maxDepth = d3.max(root.descendants(), d => d.depth);
@@ -104,7 +103,47 @@ function renderSingleTree(treeData) {
         .style("opacity", 1);
     }, depth * delayPerDepth);
   }
+
+ 
+
+  setTimeout(() => { 
+    const leaves = root.leaves();
+  
+    let homeWinCount = 0;
+    let awayWinCount = 0;
+    leaves.forEach(leaf => {
+      if (leaf.data.name === "Home win") homeWinCount++;
+      else if (leaf.data.name === "Away win") awayWinCount++;
+    });
+  
+    let winner = null;
+    if (homeWinCount > awayWinCount) winner = "Home";
+    else if (awayWinCount > homeWinCount) winner = "Away";
+    else winner = "Tie";
+
+    document.getElementById("home").innerHTML = `<strong>Home Wins:</strong> ${homeWinCount}`;
+    document.getElementById("away").innerHTML = `<strong>Away Wins:</strong> ${awayWinCount}`;
+
+
+
+
+  
+    const color = winner === "Home" ? "#69b3a2" : (winner === "Away" ? "#ff6347" : "#999");
+  
+    d3.selectAll("#forestSummary .summaryCircle")
+      .filter((d, i) => i === currentTreeIndex)
+      .transition()
+      .duration(600)
+      .style("background", color)
+      .style("opacity", 1)
+      .style("width", "40px")   // Animate grow width
+      .style("height", "40px")  // Animate grow height
+      .style("margin-top", "20px")
+      .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
+  }, (maxDepth + 1) * delayPerDepth);
+  
 }
+
 
 function updateButtons() {
   document.getElementById("backBtn").disabled = currentTreeIndex === 0;
@@ -130,46 +169,28 @@ function init() {
       const legend = d3.select("#legend").html(""); // Clear if exists
       legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`);
       legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`);
+
+      // --- NEW: Initialize forestSummary with placeholder circles
+      const summary = d3.select("#forestSummary").html("");
+      summary.selectAll("div")
+        .data(trees)
+        .enter()
+        .append("div")
+        .attr("class", "summaryCircle")
+        .style("width", "0px") // Start at 0px
+        .style("height", "0px")
+        .style("border-radius", "50%")
+        .style("background", "#eee")
+        .style("border", "1px solid #333")
+        .style("display", "inline-block")
+        .style("margin", "0 3px")
+        .style("opacity", 0.5);
     })
     .catch(error => console.error("Error loading random_forest.json:", error));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const nTrees = document.getElementById("yearSlider");
-  const depth = document.getElementById("depthSlider");
-  nTrees.value = localStorage.getItem("numTrees");
-  depth.value = localStorage.getItem("depth");
 
-  nTrees.addEventListener("change", function (event) {
-    localStorage.setItem("numTrees", event.target.value);
-    getData(nTrees.value, depth.value);
-  });
 
-  depth.addEventListener("change", function (event) {
-    localStorage.setItem("depth", event.target.value);
-    getData(nTrees.value, depth.value);
-  });
-
-  document.getElementById("away").innerHTML = `<strong>${awayWins}</strong>`;
-
-  document.getElementById("backBtn").addEventListener("click", () => {
-    if (currentTreeIndex > 0) {
-      currentTreeIndex--;
-      renderSingleTree(trees[currentTreeIndex]);
-      updateButtons();
-    }
-  });
-
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    if (currentTreeIndex < trees.length - 1) {
-      currentTreeIndex++;
-      renderSingleTree(trees[currentTreeIndex]);
-      updateButtons();
-    }
-  });
-
-  init();
-});
 
 async function getData(n, d) {
   const url = `http://localhost:5000/train?numTrees=${n}&depth=${d}`;
@@ -206,5 +227,33 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("depth", event.target.value);
     getData(nTrees.value, depth.value);
   });
-  document.getElementById("away").innerHTML = `<strong>${awayWins}</strong>`;
+
+  document.getElementById("backBtn").addEventListener("click", () => {
+    if (currentTreeIndex > 0) {
+      currentTreeIndex--;
+      document.getElementById("home").innerHTML = `<strong>Home Wins:</strong>`;
+      document.getElementById("away").innerHTML = `<strong>Away Wins:</strong>`;
+      renderSingleTree(trees[currentTreeIndex]);
+      updateButtons();
+    }
+  });
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    if (currentTreeIndex < trees.length - 1) {
+      currentTreeIndex++;
+      document.getElementById("home").innerHTML = `<strong>Home Wins:</strong>`;
+      document.getElementById("away").innerHTML = `<strong>Away Wins:</strong>`;
+
+      renderSingleTree(trees[currentTreeIndex]);
+      updateButtons();
+    }
+  });
+
+  init();
+
+
 });
+
+
+
+
