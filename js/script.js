@@ -37,7 +37,7 @@ function renderSingleTree(treeData) {
     .style("font-size", "12px")
     .style("opacity", 0);
 
-  const xOffset = (maxTreeWidth - d3.max(root.descendants(), (d) => d.x)) / 2 - 100;
+  const xOffset = (maxTreeWidth - d3.max(root.descendants(), (d) => d.x)) / 2 - 300;
   const g = svg.append("g").attr("transform", `translate(${xOffset}, 100)`);
 
   const link = g.selectAll(".link")
