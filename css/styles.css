@@ -37,40 +37,6 @@ body{
   width: 100%;
 }
 
-.sliders{
-  background-color: #333232;
-  border: 2px solid #ccc;
-  color: white;
-  border-radius: 12px;
-  box-shadow: 9px 9px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  width: 95%;
-
-
-}
-
-.slider {
-  width: 80%;
-}
-
-#tickmarks {
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-#tickmarks option {
-  height: 20px;
-  background: transparent;
-  color: white;
-  font-size: 19px;
-}
 
 .row {
   width: 100%;
@@ -87,14 +53,6 @@ body{
   flex-direction: row;
   width: 100%;
   justify-content: flex-start;
-}
-
-.selector {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .title {
@@ -128,6 +86,9 @@ body{
   display: none;
 }
 
+
+/* User Input and Controls */
+
 #controls {
   display: flex;
   flex-direction: row;
@@ -140,10 +101,54 @@ button {
   margin-right: 10px;
   padding: 0 20px 0 20px;
   font-size: 18px;
-  box-shadow: 5px 5px black;
-  border-radius: 12px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
   color: white;
   cursor: pointer;
+}
+
+
+.selector {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliders{
+  background-color: #333232;
+  border: 2px solid #ccc;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 9px 9px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 95%;
+
+
+}
+
+.slider {
+  width: 80%;
+}
+
+#tickmarks {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+#tickmarks option {
+  height: 20px;
+  background: transparent;
+  color: white;
+  font-size: 19px;
 }
 
 #nextBtn {
