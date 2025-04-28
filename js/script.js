@@ -12,7 +12,7 @@ function cleanName(str) {
 
 // Function to render a single decision tree visualization
 function renderSingleTree(treeData) {
-  const maxTreeWidth = 1700;
+  const maxTreeWidth = 1300;
   const treeHeight = 600;
   const timing = 1500;  // Animation timing
 
@@ -44,7 +44,7 @@ function renderSingleTree(treeData) {
     .style("opacity", 0);
 
   // Center the tree horizontally
-  const xOffset = (maxTreeWidth - d3.max(root.descendants(), (d) => d.x)) / 2 - 300;
+  const xOffset = (maxTreeWidth - d3.max(root.descendants(), (d) => d.x)) / 2 - 100;
   const g = svg.append("g").attr("transform", `translate(${xOffset}, 100)`);
 
   // Draw tree links (lines between nodes)
@@ -229,19 +229,18 @@ document.addEventListener("DOMContentLoaded", () => {
   nTrees.value = localStorage.getItem("numTrees");
   depth.value = localStorage.getItem("depth");
 
-  // Event listener for number of trees slider
   nTrees.addEventListener("change", function (event) {
     localStorage.setItem("numTrees", event.target.value);
-    getData(nTrees.value, depth.value);
   });
 
-  // Event listener for tree depth slider
   depth.addEventListener("change", function (event) {
     localStorage.setItem("depth", event.target.value);
-    getData(nTrees.value, depth.value);
   });
 
-  // Event listener for back button
+  document.getElementById("train").addEventListener("click", () => {
+    getData(localStorage.getItem('numTrees'), localStorage.getItem('depth'));
+  });
+
   document.getElementById("backBtn").addEventListener("click", () => {
     if (currentTreeIndex > 0) {
       currentTreeIndex--;
@@ -252,7 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Event listener for next button
   document.getElementById("nextBtn").addEventListener("click", () => {
     if (currentTreeIndex < trees.length - 1) {
       currentTreeIndex++;

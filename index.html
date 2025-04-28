@@ -1,96 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Final Project Mockup</title>
     <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="title">
-        <h1>Final Project Mockup: Fourth and Forecast</h1>
-        <h3>Caleb Haber, Caleb Holland, Benjamin Johnson</h3>
+      <h1>Final Project Mockup: Fourth and Forecast</h1>
+      <h3>Caleb Haber, Caleb Holland, Benjamin Johnson</h3>
     </div>
 
     <div class="sliders">
-    <div class="selector">
+      <div class="selector">
         <h3>Number of Trees</h3>
         <input
-            type="range"
-            id="yearSlider"
-            min="1"
-            max="10"
-            step="1"
-            list="tickmarks"
-            class="slider"
+          type="range"
+          id="yearSlider"
+          min="1"
+          max="10"
+          step="1"
+          list="tickmarks"
+          class="slider"
         />
         <datalist id="tickmarks">
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-            <option value="4" label="4"></option>
-            <option value="5" label="5"></option>
-            <option value="6" label="6"></option>
-            <option value="7" label="7"></option>
-            <option value="8" label="8"></option>
-            <option value="9" label="9"></option>
-            <option value="10" label="10"></option>
+          <option value="1" label="1"></option>
+          <option value="2" label="2"></option>
+          <option value="3" label="3"></option>
+          <option value="4" label="4"></option>
+          <option value="5" label="5"></option>
+          <option value="6" label="6"></option>
+          <option value="7" label="7"></option>
+          <option value="8" label="8"></option>
+          <option value="9" label="9"></option>
+          <option value="10" label="10"></option>
         </datalist>
-    </div>
+      </div>
 
-    <div class="selector">
+      <div class="selector">
         <h3>Depth</h3>
         <input
-            type="range"
-            id="depthSlider"
-            min="2"
-            max="11"
-            step="1"
-            list="tickmarks"
-            class="slider"
+          type="range"
+          id="depthSlider"
+          min="2"
+          max="7"
+          step="1"
+          list="tickmarks"
+          class="slider"
         />
         <datalist id="tickmarks">
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-            <option value="4" label="4"></option>
-            <option value="5" label="5"></option>
-            <option value="6" label="6"></option>
-            <option value="7" label="7"></option>
-            <option value="8" label="8"></option>
-            <option value="9" label="9"></option>
-            <option value="10" label="10"></option>
-            <option value="11" label="11"></option>
+          <option value="2" label="2"></option>
+          <option value="3" label="3"></option>
+          <option value="4" label="4"></option>
+          <option value="5" label="5"></option>
+          <option value="6" label="6"></option>
+          <option value="7" label="7"></option>
         </datalist>
-        </div>
+      </div>
+      <button id="train" class="trainBtn">Train</button>
     </div>
 
     <div class="split">
-        <div class="container">
+      <div class="container">
         <div class="row">
-        <div class="row2">
-        
-        <div id="home" style="margin-right: 1vw">
-            <strong>Home Wins</strong>
-        </div>
-        
-        <div id="away"><strong>Away Wins:</strong></div>
-        </div>
+          <div class="row2">
+            <div id="home" style="margin-right: 1vw">
+              <strong>Home Wins</strong>
+            </div>
 
-        <div id="controls">
-        <button id="backBtn">⟵ Back</button>
-        <button id="nextBtn">Next ⟶</button>
+            <div id="away"><strong>Away Wins:</strong></div>
+          </div>
+
+          <div id="controls">
+            <button id="backBtn">⟵ Back</button>
+            <button id="nextBtn">Next ⟶</button>
+          </div>
         </div>
-        
-    </div>
         <div id="vis" style="display: flex; flex-wrap: wrap; gap: 2rem"></div>
-        </div>
-        <div id="forestSummary"></div>
+      </div>
+      <div id="forestSummary"></div>
     </div>
 
     <!-- Load D3.js -->
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.2.6"></script>
     <script src="https://d3js.org/d3.v7.js"></script>
     <script src="js/script.js"></script>
-    
-</body>
+  </body>
 </html>
