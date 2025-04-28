@@ -128,7 +128,7 @@ function renderSingleTree(treeData) {
 
 
   
-    const color = winner === "Home" ? "#69b3a2" : (winner === "Away" ? "#ff6347" : "#999");
+    const color = winner === "Home" ? "#69b3a2" : (winner === "Away" ? "#ff6347" : "#800080");
   
     d3.selectAll("#forestSummary .summaryCircle")
       .filter((d, i) => i === currentTreeIndex)
@@ -136,8 +136,8 @@ function renderSingleTree(treeData) {
       .duration(600)
       .style("background", color)
       .style("opacity", 1)
-      .style("width", "40px")   // Animate grow width
-      .style("height", "40px")  // Animate grow height
+      .style("width", "40px")  
+      .style("height", "40px") 
       .style("margin-top", "20px")
       .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
   }, (maxDepth + 1) * delayPerDepth);
