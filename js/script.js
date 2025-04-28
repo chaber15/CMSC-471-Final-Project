@@ -162,7 +162,6 @@ function updateButtons() {
 
 // Initialization function - loads trees and sets up UI
 function init() {
-  // Set defaults in localStorage if not set
   if (localStorage.getItem("numTrees") === null) {
     localStorage.setItem("numTrees", 5);
   }
@@ -264,5 +263,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  init(); // Final call to initialize page setup
+  init();
 });
