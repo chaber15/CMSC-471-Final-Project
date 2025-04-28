@@ -1,8 +1,10 @@
-let trees = [];
-let currentTreeIndex = 0;
-let homeWins = 0;
-let awayWins = 0;
+// Global variables
+let trees = [];               // Stores all the trees loaded from JSON
+let currentTreeIndex = 0;      // Tracks which tree is currently being displayed
+let homeWins = 0;              // Tracks number of Home wins
+let awayWins = 0;              // Tracks number of Away wins
 
+// Helper function to clean the node names by removing extra text
 function cleanName(str) {
   if (!str) return "";
   const index = str.indexOf("<");
@@ -10,22 +12,28 @@ function cleanName(str) {
   return cleaned === "Home win" || cleaned === "Away win" ? "" : cleaned;
 }
 
+// Function to render a single decision tree visualization
 function renderSingleTree(treeData) {
   const maxTreeWidth = 1700;
   const treeHeight = 600;
-  const timing = 1500;
+  const timing = 1500;  // Animation timing
 
-  d3.select("#vis").html(""); // Clear previous tree
+  d3.select("#vis").html(""); // Clear any previous tree from the visualization area
 
+  // Create a hierarchical structure
   const root = d3.hierarchy(treeData);
+
+  // Create a tree layout
   const treeLayout = d3.tree().size([maxTreeWidth, treeHeight]);
   treeLayout(root);
 
+  // Create SVG container
   const svg = d3.select("#vis")
     .append("svg")
     .attr("width", maxTreeWidth)
     .attr("height", treeHeight + 125);
 
+  // Create tooltip for displaying node names on hover
   const tooltip = d3.select("#vis")
     .append("div")
     .style("position", "absolute")
@@ -37,9 +45,11 @@ function renderSingleTree(treeData) {
     .style("font-size", "12px")
     .style("opacity", 0);
 
+  // Center the tree horizontally
   const xOffset = (maxTreeWidth - d3.max(root.descendants(), (d) => d.x)) / 2 - 300;
   const g = svg.append("g").attr("transform", `translate(${xOffset}, 100)`);
 
+  // Draw tree links (lines between nodes)
   const link = g.selectAll(".link")
     .data(root.links())
     .enter()
@@ -53,6 +63,7 @@ function renderSingleTree(treeData) {
     .attr("stroke-width", 3)
     .style("opacity", 0);
 
+  // Draw tree nodes (circles)
   const node = g.selectAll(".node")
     .data(root.descendants())
     .enter()
@@ -61,16 +72,17 @@ function renderSingleTree(treeData) {
     .attr("transform", d => `translate(${d.x},${d.y})`)
     .style("opacity", 0);
 
+  // Draw circles for each node
   node.append("circle")
     .attr("r", 13)
     .attr("fill", d => {
       if (d.data.name === "Home win") {
-        return "#69b3a2";
+        return "#69b3a2"; // Greenish for Home win
       } else if (d.data.name === "Away win") {
-        return "#ff6347";
-      } else return "#ADD8E6";
+        return "#ff6347"; // Red for Away win
+      } else return "#ADD8E6"; // Light blue for other nodes
     })
-    .on("mouseover", function (event, d) {
+    .on("mouseover", function (event, d) {  // Show tooltip on hover
       tooltip.transition().duration(200).style("opacity", 0.9);
       tooltip.html(d.data.name)
         .style("left", `${event.pageX + 10}px`)
@@ -78,15 +90,16 @@ function renderSingleTree(treeData) {
     })
     .on("mouseout", () => tooltip.transition().duration(300).style("opacity", 0));
 
+  // Add text labels to each node
   node.append("text")
     .attr("dy", -20)
     .attr("text-anchor", "middle")
     .text(d => cleanName(d.data.name))
     .style("fill", "grey")
     .style("font-weight", "bold")
-
     .style("font-size", "15px");
 
+  // Animate nodes and links appearing depth-by-depth
   const maxDepth = d3.max(root.descendants(), d => d.depth);
   const delayPerDepth = timing;
 
@@ -104,8 +117,7 @@ function renderSingleTree(treeData) {
     }, depth * delayPerDepth);
   }
 
- 
-
+  // After animation, update home/away win counts
   setTimeout(() => { 
     const leaves = root.leaves();
   
@@ -121,13 +133,11 @@ function renderSingleTree(treeData) {
     else if (awayWinCount > homeWinCount) winner = "Away";
     else winner = "Tie";
 
+    // Update UI counters
     document.getElementById("home").innerHTML = `<strong>Home Wins:</strong> ${homeWinCount}`;
     document.getElementById("away").innerHTML = `<strong>Away Wins:</strong> ${awayWinCount}`;
 
-
-
-
-  
+    // Highlight winner in summary circles
     const color = winner === "Home" ? "#69b3a2" : (winner === "Away" ? "#ff6347" : "#999");
   
     d3.selectAll("#forestSummary .summaryCircle")
@@ -136,21 +146,22 @@ function renderSingleTree(treeData) {
       .duration(600)
       .style("background", color)
       .style("opacity", 1)
-      .style("width", "40px")   // Animate grow width
-      .style("height", "40px")  // Animate grow height
+      .style("width", "40px")
+      .style("height", "40px")
       .style("margin-top", "20px")
       .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
   }, (maxDepth + 1) * delayPerDepth);
-  
 }
 
-
+// Update navigation button states
 function updateButtons() {
   document.getElementById("backBtn").disabled = currentTreeIndex === 0;
   document.getElementById("nextBtn").disabled = currentTreeIndex === trees.length - 1;
 }
 
+// Initialization function - loads trees and sets up UI
 function init() {
+  // Set defaults in localStorage if not set
   if (localStorage.getItem("numTrees") === null) {
     localStorage.setItem("numTrees", 5);
   }
@@ -159,6 +170,7 @@ function init() {
     localStorage.setItem("depth", 4);
   }
 
+  // Load tree data from JSON
   d3.json("random_forest.json")
     .then(data => {
       trees = data[0].children;
@@ -166,18 +178,19 @@ function init() {
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
 
-      const legend = d3.select("#legend").html(""); // Clear if exists
+      // Create legend
+      const legend = d3.select("#legend").html(""); 
       legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`);
       legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`);
 
-      // --- NEW: Initialize forestSummary with placeholder circles
+      // Initialize forest summary circles
       const summary = d3.select("#forestSummary").html("");
       summary.selectAll("div")
         .data(trees)
         .enter()
         .append("div")
         .attr("class", "summaryCircle")
-        .style("width", "0px") // Start at 0px
+        .style("width", "0px") 
         .style("height", "0px")
         .style("border-radius", "50%")
         .style("background", "#eee")
@@ -189,9 +202,7 @@ function init() {
     .catch(error => console.error("Error loading random_forest.json:", error));
 }
 
-
-
-
+// Sends a request to backend to retrain Random Forest model
 async function getData(n, d) {
   const url = `http://localhost:5000/train?numTrees=${n}&depth=${d}`;
   try {
@@ -199,35 +210,38 @@ async function getData(n, d) {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-
     const json = await response.json();
     console.log(json);
-    // init();
+    // init();  // optional re-init if desired after new training
   } catch (error) {
     console.error(error.message);
   }
 }
 
-
-
+// Start initial loading
 document.addEventListener("load", init());
 
+// Setup DOM event listeners after page load
 document.addEventListener("DOMContentLoaded", () => {
   const nTrees = document.getElementById("yearSlider");
   const depth = document.getElementById("depthSlider");
+
   nTrees.value = localStorage.getItem("numTrees");
   depth.value = localStorage.getItem("depth");
 
+  // Event listener for number of trees slider
   nTrees.addEventListener("change", function (event) {
     localStorage.setItem("numTrees", event.target.value);
     getData(nTrees.value, depth.value);
   });
 
+  // Event listener for tree depth slider
   depth.addEventListener("change", function (event) {
     localStorage.setItem("depth", event.target.value);
     getData(nTrees.value, depth.value);
   });
 
+  // Event listener for back button
   document.getElementById("backBtn").addEventListener("click", () => {
     if (currentTreeIndex > 0) {
       currentTreeIndex--;
@@ -238,22 +252,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Event listener for next button
   document.getElementById("nextBtn").addEventListener("click", () => {
     if (currentTreeIndex < trees.length - 1) {
       currentTreeIndex++;
       document.getElementById("home").innerHTML = `<strong>Home Wins:</strong>`;
       document.getElementById("away").innerHTML = `<strong>Away Wins:</strong>`;
-
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
     }
   });
 
-  init();
-
-
+  init(); // Final call to initialize page setup
 });
-
-
-
-
