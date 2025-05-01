@@ -261,5 +261,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.getElementById("toggleExplanation").addEventListener("click", () => {
+    const descCol = document.querySelector(".descCol");
+  
+    if (!descCol) {
+      alert("Explanation content not found.");
+      return;
+    }
+  
+    const explanationHTML = `
+  <html>
+    <head>
+      <title>Explanation</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+          line-height: 1.6;
+          background-color: #333232;
+          color: white;
+        }
+        h3 {
+          color: white;
+        }
+        ol li {
+          margin-bottom: 10px;
+        }
+        strong {
+          color: #ccc;
+        }
+        p {
+          margin-top: 1rem;
+        }
+      </style>
+    </head>
+    <body>
+      ${descCol.innerHTML}
+    </body>
+  </html>
+`;
+
+  
+    const popup = window.open("", "Explanation", "width=600,height=500");
+    popup.document.write(explanationHTML);
+    popup.document.close();
+  });
+  
+
   init();
 });
