@@ -14,7 +14,9 @@ function cleanName(str) {
 function renderSingleTree(treeData) {
   const maxTreeWidth = 1300;
   const treeHeight = 600;
-  const timing = 1500;  // Animation timing
+  const timing = 800;  // Animation timing
+  home_color = "#3CB371"
+  away_color = "#ff6347"
 
   d3.select("#vis").html(""); // Clear any previous tree from the visualization area
 
@@ -75,13 +77,13 @@ function renderSingleTree(treeData) {
     .attr("r", 13)
     .attr("fill", d => {
       if (d.data.name === "Home win") {
-        return "#69b3a2"; // Greenish for Home win
+        return home_color; // Greenish for Home win
       } else if (d.data.name === "Away win") {
-        return "#ff6347"; // Red for Away win
+        return away_color; // Red for Away win
       } else return "#ADD8E6"; // Light blue for other nodes
     })
     .on("mouseover", function (event, d) {  // Show tooltip on hover
-      tooltip.transition().duration(200).style("opacity", 0.9);
+      tooltip.transition().duration(100).style("opacity", 0.9);
       tooltip.html(d.data.name)
         .style("left", `${event.pageX + 10}px`)
         .style("top", `${event.pageY - 28}px`);
@@ -135,11 +137,8 @@ function renderSingleTree(treeData) {
     document.getElementById("home").innerHTML = `<strong>Home Wins:</strong> ${homeWinCount}`;
     document.getElementById("away").innerHTML = `<strong>Away Wins:</strong> ${awayWinCount}`;
 
-
-
-
   
-    const color = winner === "Home" ? "#69b3a2" : (winner === "Away" ? "#ff6347" : "#800080");
+    const color = winner === "Home" ? home_color : (winner === "Away" ? away_color : "#800080");
   
     d3.selectAll("#forestSummary .summaryCircle")
       .filter((d, i) => i === currentTreeIndex)
@@ -170,53 +169,83 @@ function init() {
     localStorage.setItem("depth", 4);
   }
 
-  // Load tree data from JSON
   d3.json("random_forest.json")
-    .then(data => {
-      trees = data[0].children;
-      currentTreeIndex = 0;
-      renderSingleTree(trees[currentTreeIndex]);
-      updateButtons();
+  .then(data => {
+    trees = data[0].children;
+    currentTreeIndex = 0;
+    renderSingleTree(trees[currentTreeIndex]);
+    updateButtons();
 
-      // Create legend
-      const legend = d3.select("#legend").html(""); 
-      legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`);
-      legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`);
+    // Create legend
+    const legend = d3.select("#legend").html(""); 
+    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`);
+    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`);
 
-      // Initialize forest summary circles
-      const summary = d3.select("#forestSummary").html("");
-      summary.selectAll("div")
-        .data(trees)
-        .enter()
-        .append("div")
-        .attr("class", "summaryCircle")
-        .style("width", "0px") 
-        .style("height", "0px")
-        .style("border-radius", "50%")
-        .style("background", "#eee")
-        .style("border", "1px solid #333")
-        .style("display", "inline-block")
-        .style("margin", "0 3px")
-        .style("opacity", 0.5);
-    })
-    .catch(error => console.error("Error loading random_forest.json:", error));
-}
+    // Create tooltip element for summary circles
+    const tooltip = d3.select("body")
+      .append("div")
+      .attr("id", "summaryTooltip")
+      .style("position", "absolute")
+      .style("background", "#fff")
+      .style("border", "1px solid #999")
+      .style("padding", "5px 8px")
+      .style("border-radius", "6px")
+      .style("pointer-events", "none")
+      .style("font-size", "12px")
+      .style("opacity", 0);
 
-// Sends a request to backend to retrain Random Forest model
-async function getData(n, d) {
-  const url = `http://localhost:5000/train?numTrees=${n}&depth=${d}`;
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
+    // Initialize forest summary circles
+    const summary = d3.select("#forestSummary").html("");
+
+    // Precompute outcomes for each tree
+    const treeOutcomes = trees.map(tree => {
+      const root = d3.hierarchy(tree);
+      const leaves = root.leaves();
+      let homeWins = 0, awayWins = 0;
+      leaves.forEach(leaf => {
+        if (leaf.data.name === "Home win") homeWins++;
+        else if (leaf.data.name === "Away win") awayWins++;
+      });
+      if (homeWins > awayWins) return "Home win";
+      else if (awayWins > homeWins) return "Away win";
+      else return "Tie";
+    });
+
+    summary.selectAll("div")
+      .data(trees)
+      .enter()
+      .append("div")
+      .attr("class", "summaryCircle")
+      .style("width", "40px")
+      .style("height", "40px")
+      .style("border-radius", "50%")
+      .style("background", "#eee")
+      .style("border", "1px solid #333")
+      .style("display", "inline-block")
+      .style("margin", "0 6px")
+      .style("margin-top", "20px")
+      .style("opacity", 0.5)
+
+      })
+      .catch(error => console.error("Error loading random_forest.json:", error));
+
     }
-    const json = await response.json();
-    console.log(json);
-    // init();  // optional re-init if desired after new training
-  } catch (error) {
-    console.error(error.message);
-  }
-}
+
+    // Sends a request to backend to retrain Random Forest model
+    async function getData(n, d) {
+      const url = `http://localhost:5000/train?numTrees=${n}&depth=${d}`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        // init();  // optional re-init if desired after new training
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
 
 // Start initial loading
 document.addEventListener("load", init());
