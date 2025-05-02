@@ -168,7 +168,7 @@ function renderSingleTree(treeData) {
       }
     }
 
-    res = homeW >= awayW ? "Home Wins!" : "Away Wins!"
+    res = homeW >= awayW ? "HOME WINS!" : "AWAY WINS!"
 
 
 
