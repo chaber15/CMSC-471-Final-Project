@@ -133,9 +133,10 @@ function renderSingleTree(treeData) {
     else if (awayWinCount > homeWinCount) winner = "Away";
     else winner = "Tie";
 
-    // Update UI counters
-    document.getElementById("home").innerHTML = `<strong>Home Wins:</strong> ${homeWinCount}`;
-    document.getElementById("away").innerHTML = `<strong>Away Wins:</strong> ${awayWinCount}`;
+    
+    const legend = d3.select("#legend").html(""); 
+    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:${homeWinCount}`);
+    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:${awayWinCount}`);
 
   
     const color = winner === "Home" ? home_color : (winner === "Away" ? away_color : "#800080");
@@ -174,12 +175,7 @@ function init() {
     trees = data[0].children;
     currentTreeIndex = 0;
     renderSingleTree(trees[currentTreeIndex]);
-    updateButtons();
-
-    // Create legend
-    const legend = d3.select("#legend").html(""); 
-    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`);
-    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`);
+    updateButtons();   
 
     // Create tooltip element for summary circles
     const tooltip = d3.select("body")
@@ -194,7 +190,6 @@ function init() {
       .style("font-size", "12px")
       .style("opacity", 0);
 
-    // Initialize forest summary circles
     const summary = d3.select("#forestSummary").html("");
 
     // Precompute outcomes for each tree
@@ -241,7 +236,6 @@ function init() {
         }
         const json = await response.json();
         console.log(json);
-        // init();  // optional re-init if desired after new training
       } catch (error) {
         console.error(error.message);
       }
@@ -254,6 +248,10 @@ document.addEventListener("load", init());
 document.addEventListener("DOMContentLoaded", () => {
   const nTrees = document.getElementById("yearSlider");
   const depth = document.getElementById("depthSlider");
+
+  const legend = d3.select("#legend").html(""); 
+  legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:`);
+  legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:`);
 
   nTrees.value = localStorage.getItem("numTrees");
   depth.value = localStorage.getItem("depth");
@@ -273,8 +271,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("backBtn").addEventListener("click", () => {
     if (currentTreeIndex > 0) {
       currentTreeIndex--;
-      document.getElementById("home").innerHTML = `<strong>Home Wins:</strong>`;
-      document.getElementById("away").innerHTML = `<strong>Away Wins:</strong>`;
+      const legend = d3.select("#legend").html(""); 
+      legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:`);
+      legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:`);
+
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
     }
@@ -283,8 +283,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("nextBtn").addEventListener("click", () => {
     if (currentTreeIndex < trees.length - 1) {
       currentTreeIndex++;
-      document.getElementById("home").innerHTML = `<strong>Home Wins:</strong>`;
-      document.getElementById("away").innerHTML = `<strong>Away Wins:</strong>`;
+      const legend = d3.select("#legend").html(""); 
+      legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:`);
+      legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:`);
+
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
     }

@@ -163,7 +163,8 @@ button {
 
 #toggleExplanation {
   color: black;
-  margin-left: 1.6vw;
+  margin-left: -2vw;
+  margin-top: 2vh;
 }
 
 .descCol {
