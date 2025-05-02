@@ -2,6 +2,7 @@ let trees = [];
 let currentTreeIndex = 0;
 let homeWins = 0;
 let awayWins = 0;
+let treeOutcomes = [];
 
 function cleanName(str) {
   if (!str) return "";
@@ -152,6 +153,41 @@ function renderSingleTree(treeData) {
       .style("margin-top", "20px")
       .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
   }, (maxDepth + 1) * delayPerDepth);
+
+  if (currentTreeIndex === trees.length - 1) {
+    homeW = 0;
+    awayW = 0;
+    res = "";
+
+    for(const v of treeOutcomes){
+      if (v === 'Home Win'){
+        homeW++;
+      }
+      if (v === 'Away Win'){
+        homeW++;
+      }
+    }
+
+    res = homeW >= awayW ? "Home Wins!" : "Away Wins!"
+
+
+
+    setTimeout(() => {
+      d3.select("#forestSummary")
+        .append("div")
+        .attr("id", "completionMessage")
+        .style("display", "inline-block")
+        .style("margin-left", "15px")
+        .style("margin-top", "15px")
+
+        .style("color", "#4CAF50")
+        .style("font-weight", "bold")
+        .style("font-size", "18px")
+        .style("text-align", "center")
+        .text(`${res}`);
+    }, (maxDepth + 1) * delayPerDepth + 500); 
+  }
+  
 }
 
 // Update navigation button states
@@ -193,7 +229,7 @@ function init() {
     const summary = d3.select("#forestSummary").html("");
 
     // Precompute outcomes for each tree
-    const treeOutcomes = trees.map(tree => {
+    treeOutcomes = trees.map(tree => {
       const root = d3.hierarchy(tree);
       const leaves = root.leaves();
       let homeWins = 0, awayWins = 0;
