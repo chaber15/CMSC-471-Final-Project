@@ -3,11 +3,11 @@
   line-height: 1.8;
 }
 
-.title h3{
+.title h3 {
   margin-top: -2vh;
 }
 
-body{
+body {
   background-color: #333232;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,6 @@ body{
   justify-content: center;
   width: 100%;
 }
-
 
 .row {
   width: 100%;
@@ -86,7 +85,6 @@ body{
   display: none;
 }
 
-
 /* User Input and Controls */
 
 #controls {
@@ -107,7 +105,6 @@ button {
   cursor: pointer;
 }
 
-
 .selector {
   width: 50%;
   display: flex;
@@ -116,7 +113,7 @@ button {
   align-items: center;
 }
 
-.sliders{
+.sliders {
   background-color: #333232;
   border: 2px solid #ccc;
   color: white;
@@ -128,8 +125,6 @@ button {
   align-content: center;
   align-items: center;
   width: 95%;
-
-
 }
 
 .slider {
@@ -159,9 +154,20 @@ button {
   background-color: rgb(240, 68, 68);
 }
 
-.trainBtn{
+.trainBtn {
   background-color: rgb(47, 129, 47);
   margin-right: 2.5vw;
   padding: 10px;
- width: 10%;
+  width: 10%;
+}
+
+#toggleExplanation {
+  color: black;
+  margin-left: 1.6vw;
+}
+
+.descCol {
+  display: none;
+  transition: all 0.3s ease-in-out;
+  color: white;
 }
