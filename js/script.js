@@ -148,8 +148,8 @@ function renderSingleTree(treeData) {
 
     
     const legend = d3.select("#legend").html(""); 
-    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:${homeWinCount}`);
-    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:${awayWinCount}`);
+    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins: ${homeWinCount}`);
+    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins: ${awayWinCount}`);
 
   
     const color = winner === "Home" ? home_color : (winner === "Away" ? away_color : "#800080");
@@ -290,7 +290,7 @@ function init() {
     }
 
 // Start initial loading
-document.addEventListener("load", init());
+document.addEventListener("load", init);
 
 // Setup DOM event listeners after page load
 document.addEventListener("DOMContentLoaded", () => {
