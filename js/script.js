@@ -11,6 +11,18 @@ function cleanName(str) {
   return cleaned === "Home win" || cleaned === "Away win" ? "" : cleaned;
 }
 
+d3.json("test_games.json").then(data => {
+  const dropdown = d3.select("#gameSelector");
+  data.forEach(game => {
+    const label = `${game.game} (${game.date}) - ${game.true_label}`;
+    dropdown.append("option")
+      .attr("value", game.id)
+      .text(label);
+  });
+}).catch(error => {
+  console.error("Failed to load test_games.json:", error);
+});
+
 // Function to render a single decision tree visualization
 function renderSingleTree(treeData) {
   const maxTreeWidth = 1300;

@@ -13,8 +13,6 @@ class GetTrees(Resource):
     def get(self):
         numTrees = request.args.get('numTrees')
         depth = request.args.get('depth')
-
-        
         
         trees =  train_and_export_forest(n_trees=int(numTrees), depth=int(depth))
 
