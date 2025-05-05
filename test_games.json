@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "game": "Commanders @ Lions",
-    "date": "2022, Week 2",
+    "game": "Titans @ Colts",
+    "date": "2024, Week 16",
     "true_label": "Home win",
     "predicted_label": "Home win",
     "tree_paths": [
@@ -13,282 +13,28 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 25.333,
+            "value": 29.0,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 342.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_sacks_yards <= 28.83",
-            "feature": "away_sacks_yards",
-            "threshold": 28.833499908447266,
-            "value": 19.333,
+            "value": 297.0,
             "direction": "left"
           },
           {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 342.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
-            "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 25.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 33.667,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 11.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 135.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 4.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 25.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 6.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 22.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 207.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 16.83",
+            "node": "home_first_downs <= 16.17",
             "feature": "home_first_downs",
-            "threshold": 16.833499908447266,
-            "value": 20.667,
+            "threshold": 16.166500091552734,
+            "value": 16.333,
             "direction": "right"
           },
           {
-            "node": "away_yards <= 405.50",
-            "feature": "away_yards",
-            "threshold": 405.5,
-            "value": 342.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 20.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 4.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 316.83",
-            "feature": "away_yards",
-            "threshold": 316.83349609375,
-            "value": 342.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 22.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 30.50",
-            "feature": "home_rush_att",
-            "threshold": 30.5,
-            "value": 25.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 370.83",
-            "feature": "home_yards",
-            "threshold": 370.83349609375,
-            "value": 382.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 11.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 0.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 342.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 20.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs_from_penalty <= 3.50",
-            "feature": "home_first_downs_from_penalty",
-            "threshold": 3.5,
-            "value": 1.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 382.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 194.83",
-            "feature": "away_pass_yards",
-            "threshold": 194.83350372314453,
-            "value": 207.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_num <= 1.50",
-            "feature": "home_sacks_num",
-            "threshold": 1.5,
-            "value": 0.667,
+            "node": "home_sacks_yards <= 23.50",
+            "feature": "home_sacks_yards",
+            "threshold": 23.5,
+            "value": 3.667,
             "direction": "left"
           },
           {
@@ -300,8 +46,8 @@
   },
   {
     "id": 1,
-    "game": "49ers @ Rams",
-    "date": "2004, Week 13",
+    "game": "49ers @ Ravens",
+    "date": "2011, Week 12",
     "true_label": "Home win",
     "predicted_label": "Home win",
     "tree_paths": [
@@ -312,282 +58,28 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 22.667,
+            "value": 22.333,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 259.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs <= 16.17",
-            "feature": "home_first_downs",
-            "threshold": 16.166500091552734,
-            "value": 22.667,
+            "value": 354.0,
             "direction": "right"
           },
           {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 259.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 325.83",
-            "feature": "home_yards",
-            "threshold": 325.83349609375,
-            "value": 394.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_att <= 31.83",
-            "feature": "away_pass_att",
-            "threshold": 31.833499908447266,
-            "value": 35.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 9.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 86.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 9.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 22.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 4.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 17.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 173.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 144.83",
-            "feature": "away_rush_yards",
-            "threshold": 144.83350372314453,
-            "value": 86.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 22.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 9.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_score_rolling <= 26.50",
-            "feature": "home_score_rolling",
-            "threshold": 26.5,
-            "value": 19.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
+            "node": "away_score_rolling <= 25.17",
             "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 15.667,
+            "threshold": 25.166500091552734,
+            "value": 23.0,
             "direction": "left"
           },
           {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 9.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_interceptions <= 1.50",
-            "feature": "home_interceptions",
-            "threshold": 1.5,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 9.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 3.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 196.00",
-            "feature": "away_pass_yards",
-            "threshold": 196.0,
-            "value": 173.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 259.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.50",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.5,
-            "value": 15.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 371.50",
-            "feature": "home_yards",
-            "threshold": 371.5,
-            "value": 394.667,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 394.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 194.83",
-            "feature": "away_pass_yards",
-            "threshold": 194.83350372314453,
-            "value": 173.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 306.17",
-            "feature": "away_yards",
-            "threshold": 306.1669921875,
-            "value": 259.333,
+            "node": "home_plays <= 71.17",
+            "feature": "home_plays",
+            "threshold": 71.16650009155273,
+            "value": 66.333,
             "direction": "left"
           },
           {
@@ -599,10 +91,10 @@
   },
   {
     "id": 2,
-    "game": "Bears @ Steelers",
-    "date": "2013, Week 3",
-    "true_label": "Away win",
-    "predicted_label": "Away win",
+    "game": "Chargers @ Buccaneers",
+    "date": "2012, Week 10",
+    "true_label": "Home win",
+    "predicted_label": "Home win",
     "tree_paths": [
       {
         "tree_index": 0,
@@ -611,286 +103,32 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 19.667,
+            "value": 32.333,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 374.333,
+            "value": 303.667,
+            "direction": "left"
+          },
+          {
+            "node": "home_first_downs <= 16.17",
+            "feature": "home_first_downs",
+            "threshold": 16.166500091552734,
+            "value": 24.0,
             "direction": "right"
           },
           {
-            "node": "away_sacks_yards <= 28.83",
-            "feature": "away_sacks_yards",
-            "threshold": 28.833499908447266,
-            "value": 6.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 374.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
-            "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 19.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 14.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 11.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 117.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 1.0,
+            "node": "home_sacks_yards <= 23.50",
+            "feature": "home_sacks_yards",
+            "threshold": 23.5,
+            "value": 8.0,
             "direction": "left"
           },
           {
             "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 19.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 5.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 20.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 257.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 16.83",
-            "feature": "home_first_downs",
-            "threshold": 16.833499908447266,
-            "value": 15.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 2.50",
-            "feature": "home_interceptions",
-            "threshold": 2.5,
-            "value": 0.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 15.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 344.33",
-            "feature": "away_yards",
-            "threshold": 344.33349609375,
-            "value": 374.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_att <= 33.50",
-            "feature": "away_pass_att",
-            "threshold": 33.5,
-            "value": 34.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 27.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 30.50",
-            "feature": "home_rush_att",
-            "threshold": 30.5,
-            "value": 19.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 370.83",
-            "feature": "home_yards",
-            "threshold": 370.83349609375,
-            "value": 228.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 11.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 3.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 0.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 374.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 15.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_pen_num <= 5.17",
-            "feature": "away_pen_num",
-            "threshold": 5.166500091552734,
-            "value": 3.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 228.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 1.83",
-            "feature": "away_sacks_num",
-            "threshold": 1.8335000276565552,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_def_st_td <= 0.83",
-            "feature": "home_def_st_td",
-            "threshold": 0.8334999978542328,
-            "value": 0.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
           }
         ]
       }
@@ -898,8 +136,8 @@
   },
   {
     "id": 3,
-    "game": "49ers @ Rams",
-    "date": "2009, Week 17",
+    "game": "Broncos @ Bills",
+    "date": "2007, Week 1",
     "true_label": "Away win",
     "predicted_label": "Away win",
     "tree_paths": [
@@ -910,282 +148,28 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 22.333,
+            "value": 25.0,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 299.333,
+            "value": 324.667,
             "direction": "left"
           },
           {
             "node": "home_first_downs <= 16.17",
             "feature": "home_first_downs",
             "threshold": 16.166500091552734,
-            "value": 14.667,
+            "value": 15.0,
             "direction": "left"
           },
           {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 299.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
-            "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 22.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 10.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 7.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 126.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 1.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 22.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 4.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 14.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 172.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 144.83",
-            "feature": "away_rush_yards",
-            "threshold": 144.83350372314453,
-            "value": 126.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 3.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 14.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 344.33",
-            "feature": "away_yards",
-            "threshold": 344.33349609375,
-            "value": 299.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_drives <= 10.83",
-            "feature": "away_drives",
-            "threshold": 10.833499908447266,
-            "value": 13.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 19.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 30.50",
-            "feature": "home_rush_att",
-            "threshold": 30.5,
-            "value": 22.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 370.83",
-            "feature": "home_yards",
-            "threshold": 370.83349609375,
-            "value": 238.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 7.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 2.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 3.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 299.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.50",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.5,
-            "value": 9.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_score_rolling <= 17.50",
-            "feature": "away_score_rolling",
-            "threshold": 17.5,
-            "value": 19.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 238.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 1.83",
-            "feature": "away_sacks_num",
-            "threshold": 1.8335000276565552,
-            "value": 1.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_def_st_td <= 0.83",
-            "feature": "home_def_st_td",
-            "threshold": 0.8334999978542328,
-            "value": 0.0,
+            "node": "home_redzone_comp <= 1.50",
+            "feature": "home_redzone_comp",
+            "threshold": 1.5,
+            "value": 0.333,
             "direction": "left"
           },
           {
@@ -1197,307 +181,8 @@
   },
   {
     "id": 4,
-    "game": "Texans @ Jaguars",
-    "date": "2011, Week 12",
-    "true_label": "Away win",
-    "predicted_label": "Away win",
-    "tree_paths": [
-      {
-        "tree_index": 0,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.83",
-            "feature": "home_rush_att",
-            "threshold": 32.833499908447266,
-            "value": 31.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 335.17",
-            "feature": "away_yards",
-            "threshold": 335.16650390625,
-            "value": 386.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_sacks_yards <= 28.83",
-            "feature": "away_sacks_yards",
-            "threshold": 28.833499908447266,
-            "value": 10.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 386.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
-            "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 31.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 13.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 10.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 200.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_score_rolling <= 20.17",
-            "feature": "home_score_rolling",
-            "threshold": 20.166500091552734,
-            "value": 13.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 31.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 7.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 20.667,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 185.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 144.83",
-            "feature": "away_rush_yards",
-            "threshold": 144.83350372314453,
-            "value": 200.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_interceptions <= 0.50",
-            "feature": "home_interceptions",
-            "threshold": 0.5,
-            "value": 1.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 18.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 2.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 316.83",
-            "feature": "away_yards",
-            "threshold": 316.83349609375,
-            "value": 386.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 30.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 30.50",
-            "feature": "home_rush_att",
-            "threshold": 30.5,
-            "value": 31.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.17",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.166500091552734,
-            "value": 8.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 10.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 386.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 18.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs_from_penalty <= 3.50",
-            "feature": "home_first_downs_from_penalty",
-            "threshold": 3.5,
-            "value": 1.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 242.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 1.83",
-            "feature": "away_sacks_num",
-            "threshold": 1.8335000276565552,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_def_st_td <= 0.83",
-            "feature": "home_def_st_td",
-            "threshold": 0.8334999978542328,
-            "value": 0.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "game": "Bills @ Ravens",
-    "date": "2018, Week 1",
+    "game": "Cardinals @ Texans",
+    "date": "2023, Week 11",
     "true_label": "Home win",
     "predicted_label": "Home win",
     "tree_paths": [
@@ -1508,283 +193,74 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 29.667,
+            "value": 27.0,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 322.0,
+            "value": 240.0,
             "direction": "left"
           },
           {
             "node": "home_first_downs <= 16.17",
             "feature": "home_first_downs",
             "threshold": 16.166500091552734,
-            "value": 21.667,
+            "value": 23.333,
             "direction": "right"
+          },
+          {
+            "node": "home_sacks_yards <= 23.50",
+            "feature": "home_sacks_yards",
+            "threshold": 23.5,
+            "value": 16.0,
+            "direction": "left"
           },
           {
             "leaf": "Home win"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "game": "Buccaneers @ Patriots",
+    "date": "2005, Week 15",
+    "true_label": "Home win",
+    "predicted_label": "Home win",
+    "tree_paths": [
       {
-        "tree_index": 1,
+        "tree_index": 0,
         "path": [
           {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 322.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
+            "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 29.667,
+            "threshold": 32.833499908447266,
+            "value": 31.333,
             "direction": "left"
           },
           {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 25.667,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 10.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 108.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 3.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 29.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 6.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 20.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 213.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 16.83",
-            "feature": "home_first_downs",
-            "threshold": 16.833499908447266,
-            "value": 21.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 405.50",
+            "node": "away_yards <= 335.17",
             "feature": "away_yards",
-            "threshold": 405.5,
-            "value": 322.0,
+            "threshold": 335.16650390625,
+            "value": 256.667,
             "direction": "left"
           },
           {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
+            "node": "home_first_downs <= 16.17",
             "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 21.667,
+            "threshold": 16.166500091552734,
+            "value": 25.333,
             "direction": "right"
           },
           {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 3.667,
+            "node": "home_sacks_yards <= 23.50",
+            "feature": "home_sacks_yards",
+            "threshold": 23.5,
+            "value": 12.333,
             "direction": "left"
-          },
-          {
-            "node": "away_yards <= 316.83",
-            "feature": "away_yards",
-            "threshold": 316.83349609375,
-            "value": 322.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 20.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 30.50",
-            "feature": "home_rush_att",
-            "threshold": 30.5,
-            "value": 29.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 370.83",
-            "feature": "home_yards",
-            "threshold": 370.83349609375,
-            "value": 337.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 10.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 0.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 322.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 21.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs_from_penalty <= 3.50",
-            "feature": "home_first_downs_from_penalty",
-            "threshold": 3.5,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 337.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 1.83",
-            "feature": "away_sacks_num",
-            "threshold": 1.8335000276565552,
-            "value": 4.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_redzone_att <= 2.50",
-            "feature": "away_redzone_att",
-            "threshold": 2.5,
-            "value": 3.667,
-            "direction": "right"
           },
           {
             "leaf": "Home win"
@@ -1795,8 +271,8 @@
   },
   {
     "id": 6,
-    "game": "Raiders @ Chiefs",
-    "date": "2006, Week 11",
+    "game": "Patriots @ Jets",
+    "date": "2013, Week 7",
     "true_label": "Home win",
     "predicted_label": "Home win",
     "tree_paths": [
@@ -1807,282 +283,28 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 34.667,
-            "direction": "right"
+            "value": 21.667,
+            "direction": "left"
           },
           {
-            "node": "home_sacks_yards <= 2.50",
-            "feature": "home_sacks_yards",
-            "threshold": 2.5,
-            "value": 12.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 294.83",
+            "node": "away_yards <= 335.17",
             "feature": "away_yards",
-            "threshold": 294.83349609375,
-            "value": 175.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 175.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 325.83",
-            "feature": "home_yards",
-            "threshold": 325.83349609375,
-            "value": 360.333,
+            "threshold": 335.16650390625,
+            "value": 357.333,
             "direction": "right"
           },
           {
-            "node": "away_pass_att <= 31.83",
-            "feature": "away_pass_att",
-            "threshold": 31.833499908447266,
-            "value": 27.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 6.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 63.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 3.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 34.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 410.17",
-            "feature": "home_yards",
-            "threshold": 410.16650390625,
-            "value": 360.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 138.67",
-            "feature": "away_rush_yards",
-            "threshold": 138.66649627685547,
-            "value": 63.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 112.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 144.83",
-            "feature": "away_rush_yards",
-            "threshold": 144.83350372314453,
-            "value": 63.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 0.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 20.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 3.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 316.83",
-            "feature": "away_yards",
-            "threshold": 316.83349609375,
-            "value": 175.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
+            "node": "away_score_rolling <= 25.17",
             "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 11.0,
+            "threshold": 25.166500091552734,
+            "value": 22.0,
             "direction": "left"
           },
           {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 3.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_pass_att <= 35.17",
-            "feature": "away_pass_att",
-            "threshold": 35.166500091552734,
-            "value": 27.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 6.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 2.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 0.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 175.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.50",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.5,
-            "value": 12.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 371.50",
-            "feature": "home_yards",
-            "threshold": 371.5,
-            "value": 360.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 360.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 194.83",
-            "feature": "away_pass_yards",
-            "threshold": 194.83350372314453,
-            "value": 112.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 306.17",
-            "feature": "away_yards",
-            "threshold": 306.1669921875,
-            "value": 175.667,
+            "node": "home_plays <= 71.17",
+            "feature": "home_plays",
+            "threshold": 71.16650009155273,
+            "value": 55.0,
             "direction": "left"
           },
           {
@@ -2117,272 +339,18 @@
             "direction": "right"
           },
           {
-            "node": "away_yards <= 294.83",
-            "feature": "away_yards",
-            "threshold": 294.83349609375,
-            "value": 316.0,
+            "node": "away_first_downs <= 14.17",
+            "feature": "away_first_downs",
+            "threshold": 14.166500091552734,
+            "value": 18.0,
             "direction": "right"
           },
           {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 316.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
-            "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 33.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 27.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 12.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 79.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 4.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 33.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 410.17",
-            "feature": "home_yards",
-            "threshold": 410.16650390625,
-            "value": 394.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 138.67",
-            "feature": "away_rush_yards",
-            "threshold": 138.66649627685547,
-            "value": 79.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 236.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 16.83",
-            "feature": "home_first_downs",
-            "threshold": 16.833499908447266,
-            "value": 22.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 405.50",
-            "feature": "away_yards",
-            "threshold": 405.5,
-            "value": 316.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
+            "node": "away_pass_comp <= 17.83",
+            "feature": "away_pass_comp",
             "threshold": 17.833499908447266,
-            "value": 22.0,
+            "value": 23.0,
             "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 4.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 316.83",
-            "feature": "away_yards",
-            "threshold": 316.83349609375,
-            "value": 316.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 23.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 30.50",
-            "feature": "home_rush_att",
-            "threshold": 30.5,
-            "value": 33.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.17",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.166500091552734,
-            "value": 13.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 12.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 2.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 316.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.50",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.5,
-            "value": 13.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 371.50",
-            "feature": "home_yards",
-            "threshold": 371.5,
-            "value": 394.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 394.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 194.83",
-            "feature": "away_pass_yards",
-            "threshold": 194.83350372314453,
-            "value": 236.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_num <= 1.50",
-            "feature": "home_sacks_num",
-            "threshold": 1.5,
-            "value": 1.0,
-            "direction": "left"
           },
           {
             "leaf": "Home win"
@@ -2423,264 +391,10 @@
             "direction": "right"
           },
           {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 273.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_yards <= 325.83",
-            "feature": "home_yards",
-            "threshold": 325.83349609375,
-            "value": 363.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_att <= 31.83",
-            "feature": "away_pass_att",
-            "threshold": 31.833499908447266,
-            "value": 25.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 8.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 120.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 3.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 31.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 4.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 15.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 153.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 144.83",
-            "feature": "away_rush_yards",
-            "threshold": 144.83350372314453,
-            "value": 120.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 20.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 4.17",
-            "feature": "home_redzone_att",
-            "threshold": 4.166500091552734,
-            "value": 3.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 316.83",
-            "feature": "away_yards",
-            "threshold": 316.83349609375,
-            "value": 273.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 11.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 3.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_pass_att <= 35.17",
-            "feature": "away_pass_att",
-            "threshold": 35.166500091552734,
-            "value": 25.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 8.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_interceptions <= 1.58",
-            "feature": "home_interceptions",
-            "threshold": 1.5835000276565552,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 273.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs_from_passing <= 10.50",
-            "feature": "home_first_downs_from_passing",
-            "threshold": 10.5,
-            "value": 11.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 371.50",
-            "feature": "home_yards",
-            "threshold": 371.5,
-            "value": 363.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 363.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 194.83",
-            "feature": "away_pass_yards",
-            "threshold": 194.83350372314453,
-            "value": 153.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 306.17",
-            "feature": "away_yards",
-            "threshold": 306.1669921875,
-            "value": 273.667,
+            "node": "home_sacks_yards <= 23.50",
+            "feature": "home_sacks_yards",
+            "threshold": 23.5,
+            "value": 9.333,
             "direction": "left"
           },
           {
@@ -2692,10 +406,10 @@
   },
   {
     "id": 9,
-    "game": "Browns @ Colts",
-    "date": "2017, Week 3",
-    "true_label": "Home win",
-    "predicted_label": "Away win",
+    "game": "Broncos @ Patriots",
+    "date": "2020, Week 6",
+    "true_label": "Away win",
+    "predicted_label": "Home win",
     "tree_paths": [
       {
         "tree_index": 0,
@@ -2704,283 +418,29 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 25.0,
+            "value": 32.667,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 353.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_sacks_yards <= 28.83",
-            "feature": "away_sacks_yards",
-            "threshold": 28.833499908447266,
-            "value": 25.0,
+            "value": 301.333,
             "direction": "left"
           },
           {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 353.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_rush_att <= 33.50",
-            "feature": "home_rush_att",
-            "threshold": 33.5,
-            "value": 25.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_score_rolling <= 21.17",
-            "feature": "home_score_rolling",
-            "threshold": 21.166500091552734,
-            "value": 15.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 2,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 13.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 13.166500091552734,
-            "value": 12.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_rush_yards <= 165.17",
-            "feature": "away_rush_yards",
-            "threshold": 165.16649627685547,
-            "value": 127.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 2.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 3,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.50",
-            "feature": "home_rush_att",
-            "threshold": 32.5,
-            "value": 25.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_third_down_comp <= 3.83",
-            "feature": "away_third_down_comp",
-            "threshold": 3.833500027656555,
-            "value": 4.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs <= 19.50",
-            "feature": "away_first_downs",
-            "threshold": 19.5,
-            "value": 22.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 4,
-        "path": [
-          {
-            "node": "away_pass_yards <= 202.83",
-            "feature": "away_pass_yards",
-            "threshold": 202.83350372314453,
-            "value": 226.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 16.83",
+            "node": "home_first_downs <= 16.17",
             "feature": "home_first_downs",
-            "threshold": 16.833499908447266,
-            "value": 17.333,
+            "threshold": 16.166500091552734,
+            "value": 25.0,
             "direction": "right"
           },
           {
-            "node": "away_yards <= 405.50",
-            "feature": "away_yards",
-            "threshold": 405.5,
-            "value": 353.333,
+            "node": "home_sacks_yards <= 23.50",
+            "feature": "home_sacks_yards",
+            "threshold": 23.5,
+            "value": 8.0,
             "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 5,
-        "path": [
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 17.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 344.33",
-            "feature": "away_yards",
-            "threshold": 344.33349609375,
-            "value": 353.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_att <= 33.50",
-            "feature": "away_pass_att",
-            "threshold": 33.5,
-            "value": 37.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 6,
-        "path": [
-          {
-            "node": "away_score_rolling <= 18.83",
-            "feature": "away_score_rolling",
-            "threshold": 18.833499908447266,
-            "value": 17.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 2.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_pass_att <= 35.17",
-            "feature": "away_pass_att",
-            "threshold": 35.166500091552734,
-            "value": 37.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 7,
-        "path": [
-          {
-            "node": "away_first_downs_from_passing <= 12.42",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.416500091552734,
-            "value": 12.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_num <= 3.58",
-            "feature": "home_sacks_num",
-            "threshold": 3.583500027656555,
-            "value": 4.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 196.00",
-            "feature": "away_pass_yards",
-            "threshold": 196.0,
-            "value": 226.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 8,
-        "path": [
-          {
-            "node": "away_yards <= 317.17",
-            "feature": "away_yards",
-            "threshold": 317.16650390625,
-            "value": 353.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_first_downs <= 17.83",
-            "feature": "home_first_downs",
-            "threshold": 17.833499908447266,
-            "value": 17.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_pen_num <= 5.17",
-            "feature": "away_pen_num",
-            "threshold": 5.166500091552734,
-            "value": 6.667,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 9,
-        "path": [
-          {
-            "node": "home_yards <= 355.50",
-            "feature": "home_yards",
-            "threshold": 355.5,
-            "value": 291.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 1.83",
-            "feature": "away_sacks_num",
-            "threshold": 1.8335000276565552,
-            "value": 4.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_redzone_att <= 2.50",
-            "feature": "away_redzone_att",
-            "threshold": 2.5,
-            "value": 3.333,
-            "direction": "right"
           },
           {
             "leaf": "Home win"

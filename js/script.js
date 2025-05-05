@@ -3,6 +3,7 @@ let currentTreeIndex = 0;
 let homeWins = 0;
 let awayWins = 0;
 let treeOutcomes = [];
+let root = null;
 
 function cleanName(str) {
   if (!str) return "";
@@ -23,8 +24,128 @@ d3.json("test_games.json").then(data => {
   console.error("Failed to load test_games.json:", error);
 });
 
+function clearHighlights() {
+  const g = d3.select("#vis").select("g");
+
+  // Reset node borders
+  g.selectAll(".node").select("circle")
+    .attr("stroke", "#000")
+    .attr("stroke-width", 1.5);
+
+  // Reset links
+  g.selectAll(".link")
+    .attr("stroke", "#ccc")
+    .attr("stroke-width", 3);
+}
+
+function highlightPathToLeaf() {
+  clearHighlights();
+  if (!root) return;
+
+  const leaves = root.leaves();
+
+  let homeWinCount = 0;
+  let awayWinCount = 0;
+  leaves.forEach(leaf => {
+    if (leaf.data.name === "Home win") homeWinCount++;
+    else if (leaf.data.name === "Away win") awayWinCount++;
+  });
+
+  let winner = null;
+  if (homeWinCount > awayWinCount) winner = "Home";
+  else if (awayWinCount > homeWinCount) winner = "Away";
+  else winner = "Tie";
+
+  // Update legend
+  const legend = d3.select("#legend").html("");
+  legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins: ${homeWinCount}`);
+  legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins: ${awayWinCount}`);
+
+  // Highlight path to random winning leaf
+  const g = d3.select("#vis").select("g");
+  const matchingLeaves = leaves.filter(leaf => leaf.data.name === `${winner} win`);
+  if (matchingLeaves.length > 0) {
+    const randomLeaf = matchingLeaves[Math.floor(Math.random() * matchingLeaves.length)];
+
+    let current = randomLeaf;
+    const path = [];
+    while (current) {
+      path.unshift(current); // root to leaf order
+      current = current.parent;
+    }
+
+    // Animate the path step-by-step
+    path.forEach((node, i) => {
+      setTimeout(() => {
+        g.selectAll(".node")
+          .filter(d => d === node)
+          .select("circle")
+          .attr("stroke", "gold")
+          .attr("stroke-width", 4);
+
+        if (i > 0) {
+          g.selectAll(".link")
+            .filter(d => d.source === path[i - 1] && d.target === path[i])
+            .attr("stroke", "gold")
+            .attr("stroke-width", 4);
+        }
+      }, i * 600); // delay per step
+    });
+
+    // After animation finishes, update summary + final result
+    setTimeout(() => {
+      const color = winner === "Home" ? "#3CB371" : (winner === "Away" ? "#ff6347" : "#800080");
+
+      d3.selectAll("#forestSummary .summaryCircle")
+        .filter((d, i) => i === currentTreeIndex)
+        .attr("data-tested", "true")
+        .transition()
+        .duration(600)
+        .style("background", color)
+        .style("opacity", 1)
+        .style("width", "40px")
+        .style("height", "40px")
+        .style("margin-top", "20px")
+        .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
+
+      // Final forest result message (only if all trees are tested)
+      const testedTrees = d3.selectAll("#forestSummary .summaryCircle")
+        .filter(function() {
+          return d3.select(this).attr("data-tested") === "true";
+        }).size();
+
+      if (testedTrees === trees.length) {
+        let homeW = 0;
+        let awayW = 0;
+
+        for (const v of treeOutcomes) {
+          if (v === "Home win") homeW++;
+          if (v === "Away win") awayW++;
+        }
+
+        const res = homeW >= awayW ? "HOME WINS!" : "AWAY WINS!";
+
+        d3.select("#completionMessage").remove(); // Avoid duplicates
+        d3.select("#forestSummary")
+          .append("div")
+          .attr("id", "completionMessage")
+          .style("display", "inline-block")
+          .style("margin-left", "15px")
+          .style("margin-top", "15px")
+          .style("color", "#4CAF50")
+          .style("font-weight", "bold")
+          .style("font-size", "18px")
+          .style("text-align", "center")
+          .text(res);
+      }
+    }, path.length * 600); // Wait until path animation finishes
+  }
+}
+
+
 // Function to render a single decision tree visualization
 function renderSingleTree(treeData) {
+  clearHighlights();
   const maxTreeWidth = 1300;
   const treeHeight = 600;
   const timing = 800;  // Animation timing
@@ -34,7 +155,7 @@ function renderSingleTree(treeData) {
   d3.select("#vis").html(""); // Clear any previous tree from the visualization area
 
   // Create a hierarchical structure
-  const root = d3.hierarchy(treeData);
+  root = d3.hierarchy(treeData);
 
   // Create a tree layout
   const treeLayout = d3.tree().size([maxTreeWidth, treeHeight]);
@@ -128,76 +249,6 @@ function renderSingleTree(treeData) {
         .duration(timing)
         .style("opacity", 1);
     }, depth * delayPerDepth);
-  }
-
-  // After animation, update home/away win counts
-  setTimeout(() => { 
-    const leaves = root.leaves();
-  
-    let homeWinCount = 0;
-    let awayWinCount = 0;
-    leaves.forEach(leaf => {
-      if (leaf.data.name === "Home win") homeWinCount++;
-      else if (leaf.data.name === "Away win") awayWinCount++;
-    });
-  
-    let winner = null;
-    if (homeWinCount > awayWinCount) winner = "Home";
-    else if (awayWinCount > homeWinCount) winner = "Away";
-    else winner = "Tie";
-
-    
-    const legend = d3.select("#legend").html(""); 
-    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins: ${homeWinCount}`);
-    legend.append("div").html(`<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins: ${awayWinCount}`);
-
-  
-    const color = winner === "Home" ? home_color : (winner === "Away" ? away_color : "#800080");
-  
-    d3.selectAll("#forestSummary .summaryCircle")
-      .filter((d, i) => i === currentTreeIndex)
-      .transition()
-      .duration(600)
-      .style("background", color)
-      .style("opacity", 1)
-      .style("width", "40px")  
-      .style("height", "40px") 
-      .style("margin-top", "20px")
-      .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
-  }, (maxDepth + 1) * delayPerDepth);
-
-  if (currentTreeIndex === trees.length - 1) {
-    homeW = 0;
-    awayW = 0;
-    res = "";
-
-    for(const v of treeOutcomes){
-      if (v === 'Home Win'){
-        homeW++;
-      }
-      if (v === 'Away Win'){
-        homeW++;
-      }
-    }
-
-    res = homeW >= awayW ? "HOME WINS!" : "AWAY WINS!"
-
-
-
-    setTimeout(() => {
-      d3.select("#forestSummary")
-        .append("div")
-        .attr("id", "completionMessage")
-        .style("display", "inline-block")
-        .style("margin-left", "15px")
-        .style("margin-top", "15px")
-
-        .style("color", "#4CAF50")
-        .style("font-weight", "bold")
-        .style("font-size", "18px")
-        .style("text-align", "center")
-        .text(`${res}`);
-    }, (maxDepth + 1) * delayPerDepth + 500); 
   }
   
 }
@@ -315,6 +366,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("train").addEventListener("click", () => {
     getData(localStorage.getItem('numTrees'), localStorage.getItem('depth'));
   });
+
+  document.getElementById("test").addEventListener("click", () => {
+    highlightPathToLeaf();
+  });
+
 
   document.getElementById("backBtn").addEventListener("click", () => {
     if (currentTreeIndex > 0) {
