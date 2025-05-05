@@ -1,0 +1,10 @@
+- Update model so that tree actually reflects real model (precompute results and highlightPathToLeaf function)
+- Tree should only begin to grow if train is clicked (when page is loaded) -> ONLY IF WE HAVE TIME
+- Display model accuracy 
+- Show explanation above legend? 
+- Explanation (multiply buttons 3-4 what is random forest, how model is built, how training works, how num of tree's, depth improves accuracy) 
+	- what does random forest mean (how model uses a subset of data for each tree)
+	- how are trees trained, talk about entropy 
+	- talk about how each tree makes predictions and how the whole model makes predictions 
+ 	- Talk about how number of tree's and depth predicts accuracy 
+- Display what the tree predicted v what the model did
