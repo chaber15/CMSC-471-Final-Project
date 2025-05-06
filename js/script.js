@@ -13,7 +13,6 @@ function cleanName(str) {
   return cleaned === "Home win" || cleaned === "Away win" ? "" : cleaned;
 }
 
-
 d3.json("test_games.json")
   .then((data) => {
     const dropdown = d3.select("#gameSelector");
@@ -41,11 +40,31 @@ function clearHighlights() {
 }
 
 function highlightPathToLeaf(test_path) {
-  console.log(test_path)
+  console.log(test_path);
   clearHighlights();
   if (!root) return;
 
   const leaves = root.leaves();
+
+  // Find correct leaf:
+  const r = root;
+  let curr = r;
+  console.log(r);
+  for (let i = 0; i < test_path.length; i++) {
+    children = curr.children;
+    for (let c of children) {
+      if (c.data.name === test_path[i]) {
+        curr = c;
+        break;
+      }
+    }
+    console.log(children);
+    console.log(curr.data.name);
+  }
+
+  const match = curr; // the final leaf we found after digging down
+
+  //
 
   let homeWinCount = 0;
   let awayWinCount = 0;
@@ -54,7 +73,7 @@ function highlightPathToLeaf(test_path) {
 
   if (winner === "Home win") homeWinCount++;
   else awayWinCount++;
-  
+
   // Update legend
   const legend = d3.select("#legend").html("");
   legend
@@ -70,94 +89,86 @@ function highlightPathToLeaf(test_path) {
 
   // Highlight path to random winning leaf
   const g = d3.select("#vis").select("g");
-  const matchingLeaves = leaves.filter(
-    (leaf) => leaf.data.name === winner
-  );
-  if (matchingLeaves.length > 0) {
-    const randomLeaf =
-      matchingLeaves[Math.floor(Math.random() * matchingLeaves.length)];
 
-    let current = randomLeaf;
-    const path = [];
-    while (current) {
-      path.unshift(current); // root to leaf order
-      console.log(current);
-      current = current.parent;
-    }
+  let current = match;
+  const path = [];
+  while (current) {
+    path.unshift(current); // root to leaf order
+    current = current.parent;
+  }
 
-    // Animate the path step-by-step
-    path.forEach((node, i) => {
-      setTimeout(() => {
-        g.selectAll(".node")
-          .filter((d) => d === node)
-          .select("circle")
+  // Animate the path step-by-step
+  path.forEach((node, i) => {
+    setTimeout(() => {
+      g.selectAll(".node")
+        .filter((d) => d === node)
+        .select("circle")
+        .attr("stroke", "gold")
+        .attr("stroke-width", 4);
+
+      if (i > 0) {
+        g.selectAll(".link")
+          .filter((d) => d.source === path[i - 1] && d.target === path[i])
           .attr("stroke", "gold")
           .attr("stroke-width", 4);
-
-        if (i > 0) {
-          g.selectAll(".link")
-            .filter((d) => d.source === path[i - 1] && d.target === path[i])
-            .attr("stroke", "gold")
-            .attr("stroke-width", 4);
-        }
-      }, i * 600); // delay per step
-    });
-
-    // After animation finishes, update summary + final result
-    setTimeout(() => {
-      const color =
-        winner === "Home win"
-          ? "#3CB371"
-          : winner === "Away win"
-          ? "#ff6347"
-          : "#800080";
-
-      d3.selectAll("#forestSummary .summaryCircle")
-        .filter((d, i) => i === currentTreeIndex)
-        .attr("data-tested", "true")
-        .transition()
-        .duration(600)
-        .style("background", color)
-        .style("opacity", 1)
-        .style("width", "40px")
-        .style("height", "40px")
-        .style("margin-top", "20px")
-        .attr("title", `Tree ${currentTreeIndex + 1}: ${winner} win`);
-
-      // Final forest result message (only if all trees are tested)
-      const testedTrees = d3
-        .selectAll("#forestSummary .summaryCircle")
-        .filter(function () {
-          return d3.select(this).attr("data-tested") === "true";
-        })
-        .size();
-
-      if (testedTrees === trees.length) {
-        let homeW = 0;
-        let awayW = 0;
-
-        for (const v of treeOutcomes) {
-          if (v === "Home win") homeW++;
-          if (v === "Away win") awayW++;
-        }
-
-        const res = homeW >= awayW ? "HOME WINS!" : "AWAY WINS!";
-
-        d3.select("#completionMessage").remove(); // Avoid duplicates
-        d3.select("#forestSummary")
-          .append("div")
-          .attr("id", "completionMessage")
-          .style("display", "inline-block")
-          .style("margin-left", "15px")
-          .style("margin-top", "15px")
-          .style("color", "#4CAF50")
-          .style("font-weight", "bold")
-          .style("font-size", "18px")
-          .style("text-align", "center")
-          .text(res);
       }
-    }, path.length * 600); // Wait until path animation finishes
-  }
+    }, i * 600); // delay per step
+  });
+
+  // After animation finishes, update summary + final result
+  setTimeout(() => {
+    const color =
+      winner === "Home win"
+        ? "#3CB371"
+        : winner === "Away win"
+        ? "#ff6347"
+        : "#800080";
+
+    d3.selectAll("#forestSummary .summaryCircle")
+      .filter((d, i) => i === currentTreeIndex)
+      .attr("data-tested", "true")
+      .transition()
+      .duration(600)
+      .style("background", color)
+      .style("opacity", 1)
+      .style("width", "40px")
+      .style("height", "40px")
+      .style("margin-top", "20px")
+      .attr("title", `Tree ${currentTreeIndex + 1}: ${winner}`);
+
+    // Final forest result message (only if all trees are tested)
+    const testedTrees = d3
+      .selectAll("#forestSummary .summaryCircle")
+      .filter(function () {
+        return d3.select(this).attr("data-tested") === "true";
+      })
+      .size();
+
+    if (testedTrees === trees.length) {
+      let homeW = 0;
+      let awayW = 0;
+
+      for (const v of treeOutcomes) {
+        if (v === "Home win") homeW++;
+        if (v === "Away win") awayW++;
+      }
+
+      const res = homeW >= awayW ? "HOME WINS!" : "AWAY WINS!";
+
+      d3.select("#completionMessage").remove(); // Avoid duplicates
+      d3.select("#forestSummary")
+        .append("div")
+        .attr("id", "completionMessage")
+        .style("display", "inline-block")
+        .style("margin-left", "15px")
+        .style("margin-top", "15px")
+        .style("color", "#4CAF50")
+        .style("font-weight", "bold")
+        .style("font-size", "18px")
+        .style("text-align", "center")
+        .text(res);
+    }
+  }, path.length * 600); // Wait until path animation finishes
 }
 
 // Function to render a single decision tree visualization
@@ -410,15 +421,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("test").addEventListener("click", () => {
     let test_path = [];
-    let chosenGame = test_games[document.getElementById("gameSelector").value]
-    let gameTreePath = chosenGame.tree_paths[currentTreeIndex].path
+    let chosenGame = test_games[document.getElementById("gameSelector").value];
+    let gameTreePath = chosenGame.tree_paths[currentTreeIndex].path;
 
-    for (let i = 0; i < gameTreePath.length; i++){
-      if (i == gameTreePath.length - 1){ // hit leaf
-        test_path.push(gameTreePath[i].leaf)
-      }
-      else{
-        test_path.push(gameTreePath[i].node)
+    for (let i = 0; i < gameTreePath.length; i++) {
+      if (i == gameTreePath.length - 1) {
+        // hit leaf
+        test_path.push(gameTreePath[i].leaf);
+      } else {
+        test_path.push(gameTreePath[i].node);
       }
     }
 
