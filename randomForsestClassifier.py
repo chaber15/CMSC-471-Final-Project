@@ -13,7 +13,11 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='./data/nfl_games_with
     # Recursively convert a single decision tree to JSON
     def tree_to_json(tree, feature_names, tree_index):
         tree_ = tree.tree_
+        global count
+        count = 0
+
         def recurse(node):
+            global count    
             if tree_.feature[node] != _tree.TREE_UNDEFINED:
                 name = feature_names[tree_.feature[node]]
                 threshold = tree_.threshold[node]
@@ -24,9 +28,11 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='./data/nfl_games_with
             else:
                 value = tree_.value[node][0]
                 class_idx = value.argmax()
+                count += 1
                 return {
                     "name": "Home win" if class_idx == 1 else "Away win",
-                    "value": int(value.sum())
+                    "value": int(value.sum()),
+                    "id": count
                 }
         return {"name": f"tree_{tree_index}", "children": [recurse(0)]}
 

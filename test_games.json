@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "game": "Rams @ Giants",
-    "date": "2003, Week 1",
+    "game": "Buccaneers @ Falcons",
+    "date": "2018, Week 6",
     "true_label": "Home win",
     "predicted_label": "Home win",
     "tree_paths": [
@@ -13,39 +13,18 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 36.0,
+            "value": 21.667,
+            "direction": "left"
+          },
+          {
+            "node": "away_yards <= 335.17",
+            "feature": "away_yards",
+            "threshold": 335.16650390625,
+            "value": 400.667,
             "direction": "right"
           },
           {
-            "node": "away_pass_yards <= 322.83",
-            "feature": "away_pass_yards",
-            "threshold": 322.83349609375,
-            "value": 260.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_pass_comp <= 21.50",
-            "feature": "home_pass_comp",
-            "threshold": 21.5,
-            "value": 21.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_rushing <= 11.50",
-            "feature": "away_first_downs_from_rushing",
-            "threshold": 11.5,
-            "value": 2.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_possession_sec <= 2149.67",
-            "feature": "home_possession_sec",
-            "threshold": 2149.6669921875,
-            "value": 2060.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
+            "leaf": "Away win"
           }
         ]
       },
@@ -56,36 +35,15 @@
             "node": "away_yards <= 298.83",
             "feature": "away_yards",
             "threshold": 298.83349609375,
-            "value": 300.0,
+            "value": 400.667,
             "direction": "right"
           },
           {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 6.333,
+            "node": "home_yards <= 355.50",
+            "feature": "home_yards",
+            "threshold": 355.5,
+            "value": 408.667,
             "direction": "right"
-          },
-          {
-            "node": "home_drives <= 16.17",
-            "feature": "home_drives",
-            "threshold": 16.166500091552734,
-            "value": 15.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_pen_yards <= 88.17",
-            "feature": "home_pen_yards",
-            "threshold": 88.16650009155273,
-            "value": 51.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_yards <= 9.17",
-            "feature": "home_sacks_yards",
-            "threshold": 9.166500091552734,
-            "value": 2.667,
-            "direction": "left"
           },
           {
             "leaf": "Home win"
@@ -96,8 +54,61 @@
   },
   {
     "id": 1,
-    "game": "Vikings @ Bears",
-    "date": "2020, Week 10",
+    "game": "Titans @ Dolphins",
+    "date": "2006, Week 3",
+    "true_label": "Home win",
+    "predicted_label": "Home win",
+    "tree_paths": [
+      {
+        "tree_index": 0,
+        "path": [
+          {
+            "node": "home_rush_att <= 32.83",
+            "feature": "home_rush_att",
+            "threshold": 32.833499908447266,
+            "value": 26.0,
+            "direction": "left"
+          },
+          {
+            "node": "away_yards <= 335.17",
+            "feature": "away_yards",
+            "threshold": 335.16650390625,
+            "value": 272.0,
+            "direction": "left"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      },
+      {
+        "tree_index": 1,
+        "path": [
+          {
+            "node": "away_yards <= 298.83",
+            "feature": "away_yards",
+            "threshold": 298.83349609375,
+            "value": 272.0,
+            "direction": "left"
+          },
+          {
+            "node": "home_yards <= 325.83",
+            "feature": "home_yards",
+            "threshold": 325.83349609375,
+            "value": 312.667,
+            "direction": "left"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "game": "Vikings @ Commanders",
+    "date": "2017, Week 10",
     "true_label": "Away win",
     "predicted_label": "Away win",
     "tree_paths": [
@@ -108,35 +119,14 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 20.0,
+            "value": 18.667,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 392.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_drives <= 11.17",
-            "feature": "away_drives",
-            "threshold": 11.166500091552734,
-            "value": 10.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_redzone_comp <= 1.17",
-            "feature": "home_redzone_comp",
-            "threshold": 1.1664999723434448,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_redzone_att <= 2.50",
-            "feature": "away_redzone_att",
-            "threshold": 2.5,
-            "value": 3.0,
+            "value": 361.0,
             "direction": "right"
           },
           {
@@ -151,35 +141,14 @@
             "node": "away_yards <= 298.83",
             "feature": "away_yards",
             "threshold": 298.83349609375,
-            "value": 392.0,
+            "value": 361.0,
             "direction": "right"
           },
           {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 2.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 6.83",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 6.833499908447266,
-            "value": 10.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 355.17",
+            "node": "home_yards <= 355.50",
             "feature": "home_yards",
-            "threshold": 355.16650390625,
-            "value": 327.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 3.83",
-            "feature": "away_sacks_num",
-            "threshold": 3.833500027656555,
-            "value": 1.0,
+            "threshold": 355.5,
+            "value": 291.0,
             "direction": "left"
           },
           {
@@ -190,9 +159,168 @@
     ]
   },
   {
-    "id": 2,
-    "game": "Steelers @ Chiefs",
-    "date": "2021, Week 16",
+    "id": 3,
+    "game": "Lions @ Vikings",
+    "date": "2020, Week 9",
+    "true_label": "Home win",
+    "predicted_label": "Home win",
+    "tree_paths": [
+      {
+        "tree_index": 0,
+        "path": [
+          {
+            "node": "home_rush_att <= 32.83",
+            "feature": "home_rush_att",
+            "threshold": 32.833499908447266,
+            "value": 29.333,
+            "direction": "left"
+          },
+          {
+            "node": "away_yards <= 335.17",
+            "feature": "away_yards",
+            "threshold": 335.16650390625,
+            "value": 371.667,
+            "direction": "right"
+          },
+          {
+            "leaf": "Away win"
+          }
+        ]
+      },
+      {
+        "tree_index": 1,
+        "path": [
+          {
+            "node": "away_yards <= 298.83",
+            "feature": "away_yards",
+            "threshold": 298.83349609375,
+            "value": 371.667,
+            "direction": "right"
+          },
+          {
+            "node": "home_yards <= 355.50",
+            "feature": "home_yards",
+            "threshold": 355.5,
+            "value": 379.333,
+            "direction": "right"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "game": "Bengals @ Ravens",
+    "date": "2019, Week 6",
+    "true_label": "Home win",
+    "predicted_label": "Home win",
+    "tree_paths": [
+      {
+        "tree_index": 0,
+        "path": [
+          {
+            "node": "home_rush_att <= 32.83",
+            "feature": "home_rush_att",
+            "threshold": 32.833499908447266,
+            "value": 33.667,
+            "direction": "right"
+          },
+          {
+            "node": "away_pen_yards <= 36.17",
+            "feature": "away_pen_yards",
+            "threshold": 36.166500091552734,
+            "value": 58.0,
+            "direction": "right"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      },
+      {
+        "tree_index": 1,
+        "path": [
+          {
+            "node": "away_yards <= 298.83",
+            "feature": "away_yards",
+            "threshold": 298.83349609375,
+            "value": 283.667,
+            "direction": "left"
+          },
+          {
+            "node": "home_yards <= 325.83",
+            "feature": "home_yards",
+            "threshold": 325.83349609375,
+            "value": 374.667,
+            "direction": "right"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "game": "Vikings @ Lions",
+    "date": "2010, Week 17",
+    "true_label": "Home win",
+    "predicted_label": "Home win",
+    "tree_paths": [
+      {
+        "tree_index": 0,
+        "path": [
+          {
+            "node": "home_rush_att <= 32.83",
+            "feature": "home_rush_att",
+            "threshold": 32.833499908447266,
+            "value": 30.0,
+            "direction": "left"
+          },
+          {
+            "node": "away_yards <= 335.17",
+            "feature": "away_yards",
+            "threshold": 335.16650390625,
+            "value": 258.0,
+            "direction": "left"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      },
+      {
+        "tree_index": 1,
+        "path": [
+          {
+            "node": "away_yards <= 298.83",
+            "feature": "away_yards",
+            "threshold": 298.83349609375,
+            "value": 258.0,
+            "direction": "left"
+          },
+          {
+            "node": "home_yards <= 325.83",
+            "feature": "home_yards",
+            "threshold": 325.83349609375,
+            "value": 331.333,
+            "direction": "right"
+          },
+          {
+            "leaf": "Home win"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "game": "Vikings @ Packers",
+    "date": "2007, Week 10",
     "true_label": "Home win",
     "predicted_label": "Home win",
     "tree_paths": [
@@ -210,29 +338,8 @@
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 288.0,
+            "value": 326.667,
             "direction": "left"
-          },
-          {
-            "node": "home_first_downs <= 16.17",
-            "feature": "home_first_downs",
-            "threshold": 16.166500091552734,
-            "value": 20.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 279.17",
-            "feature": "away_yards",
-            "threshold": 279.16650390625,
-            "value": 288.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_yards <= 6.83",
-            "feature": "home_sacks_yards",
-            "threshold": 6.833499908447266,
-            "value": 8.0,
-            "direction": "right"
           },
           {
             "leaf": "Home win"
@@ -246,415 +353,14 @@
             "node": "away_yards <= 298.83",
             "feature": "away_yards",
             "threshold": 298.83349609375,
-            "value": 288.0,
-            "direction": "left"
+            "value": 326.667,
+            "direction": "right"
           },
           {
-            "node": "home_yards <= 325.83",
+            "node": "home_yards <= 355.50",
             "feature": "home_yards",
-            "threshold": 325.83349609375,
-            "value": 378.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_pass_comp <= 23.83",
-            "feature": "home_pass_comp",
-            "threshold": 23.833499908447266,
-            "value": 22.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_yards <= 31.00",
-            "feature": "home_sacks_yards",
-            "threshold": 31.0,
-            "value": 8.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_plays <= 59.17",
-            "feature": "away_plays",
-            "threshold": 59.166500091552734,
-            "value": 57.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "game": "Falcons @ Colts",
-    "date": "2003, Week 15",
-    "true_label": "Home win",
-    "predicted_label": "Home win",
-    "tree_paths": [
-      {
-        "tree_index": 0,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.83",
-            "feature": "home_rush_att",
-            "threshold": 32.833499908447266,
-            "value": 31.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 335.17",
-            "feature": "away_yards",
-            "threshold": 335.16650390625,
-            "value": 301.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs <= 16.17",
-            "feature": "home_first_downs",
-            "threshold": 16.166500091552734,
-            "value": 22.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 279.17",
-            "feature": "away_yards",
-            "threshold": 279.16650390625,
-            "value": 301.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_yards <= 6.83",
-            "feature": "home_sacks_yards",
-            "threshold": 6.833499908447266,
-            "value": 5.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 301.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 8.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_drives <= 16.17",
-            "feature": "home_drives",
-            "threshold": 16.166500091552734,
-            "value": 15.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_pen_yards <= 88.17",
-            "feature": "home_pen_yards",
-            "threshold": 88.16650009155273,
-            "value": 45.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_yards <= 9.17",
-            "feature": "home_sacks_yards",
-            "threshold": 9.166500091552734,
-            "value": 5.333,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "game": "Buccaneers @ Chargers",
-    "date": "2024, Week 15",
-    "true_label": "Away win",
-    "predicted_label": "Away win",
-    "tree_paths": [
-      {
-        "tree_index": 0,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.83",
-            "feature": "home_rush_att",
-            "threshold": 32.833499908447266,
-            "value": 20.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 335.17",
-            "feature": "away_yards",
-            "threshold": 335.16650390625,
-            "value": 438.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_drives <= 11.17",
-            "feature": "away_drives",
-            "threshold": 11.166500091552734,
-            "value": 11.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_plays <= 63.83",
-            "feature": "away_plays",
-            "threshold": 63.833499908447266,
-            "value": 66.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 12.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.166500091552734,
-            "value": 13.0,
-            "direction": "right"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 438.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 2.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 6.83",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 6.833499908447266,
-            "value": 13.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 355.17",
-            "feature": "home_yards",
-            "threshold": 355.16650390625,
-            "value": 253.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 3.83",
-            "feature": "away_sacks_num",
-            "threshold": 3.833500027656555,
-            "value": 2.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "game": "Commanders @ Ravens",
-    "date": "2008, Week 14",
-    "true_label": "Home win",
-    "predicted_label": "Home win",
-    "tree_paths": [
-      {
-        "tree_index": 0,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.83",
-            "feature": "home_rush_att",
-            "threshold": 32.833499908447266,
-            "value": 36.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_pass_yards <= 322.83",
-            "feature": "away_pass_yards",
-            "threshold": 322.83349609375,
-            "value": 187.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_pass_comp <= 21.50",
-            "feature": "home_pass_comp",
-            "threshold": 21.5,
-            "value": 17.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_rushing <= 11.50",
-            "feature": "away_first_downs_from_rushing",
-            "threshold": 11.5,
-            "value": 6.333,
-            "direction": "left"
-          },
-          {
-            "node": "home_possession_sec <= 2149.67",
-            "feature": "home_possession_sec",
-            "threshold": 2149.6669921875,
-            "value": 2029.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 311.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 2.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 6.83",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 6.833499908447266,
-            "value": 11.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 355.17",
-            "feature": "home_yards",
-            "threshold": 355.16650390625,
-            "value": 324.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_sacks_num <= 3.83",
-            "feature": "away_sacks_num",
-            "threshold": 3.833500027656555,
-            "value": 3.0,
-            "direction": "left"
-          },
-          {
-            "leaf": "Away win"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "game": "Raiders @ Chiefs",
-    "date": "2013, Week 6",
-    "true_label": "Home win",
-    "predicted_label": "Home win",
-    "tree_paths": [
-      {
-        "tree_index": 0,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.83",
-            "feature": "home_rush_att",
-            "threshold": 32.833499908447266,
-            "value": 30.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 335.17",
-            "feature": "away_yards",
-            "threshold": 335.16650390625,
-            "value": 313.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs <= 16.17",
-            "feature": "home_first_downs",
-            "threshold": 16.166500091552734,
-            "value": 20.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 279.17",
-            "feature": "away_yards",
-            "threshold": 279.16650390625,
-            "value": 313.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_yards <= 6.83",
-            "feature": "home_sacks_yards",
-            "threshold": 6.833499908447266,
-            "value": 12.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 313.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 4.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_drives <= 16.17",
-            "feature": "home_drives",
-            "threshold": 16.166500091552734,
-            "value": 13.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_pen_yards <= 88.17",
-            "feature": "home_pen_yards",
-            "threshold": 88.16650009155273,
-            "value": 62.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_yards <= 9.17",
-            "feature": "home_sacks_yards",
-            "threshold": 9.166500091552734,
-            "value": 12.333,
+            "threshold": 355.5,
+            "value": 362.333,
             "direction": "right"
           },
           {
@@ -666,10 +372,10 @@
   },
   {
     "id": 7,
-    "game": "Lions @ Vikings",
-    "date": "2017, Week 4",
-    "true_label": "Away win",
-    "predicted_label": "Home win",
+    "game": "Eagles @ Cowboys",
+    "date": "2020, Week 16",
+    "true_label": "Home win",
+    "predicted_label": "Away win",
     "tree_paths": [
       {
         "tree_index": 0,
@@ -678,130 +384,14 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 29.0,
+            "value": 25.0,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 316.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs <= 16.17",
-            "feature": "home_first_downs",
-            "threshold": 16.166500091552734,
-            "value": 20.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_yards <= 279.17",
-            "feature": "away_yards",
-            "threshold": 279.16650390625,
-            "value": 316.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_yards <= 6.83",
-            "feature": "home_sacks_yards",
-            "threshold": 6.833499908447266,
-            "value": 8.667,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      },
-      {
-        "tree_index": 1,
-        "path": [
-          {
-            "node": "away_yards <= 298.83",
-            "feature": "away_yards",
-            "threshold": 298.83349609375,
-            "value": 316.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 4.0,
-            "direction": "right"
-          },
-          {
-            "node": "home_drives <= 16.17",
-            "feature": "home_drives",
-            "threshold": 16.166500091552734,
-            "value": 10.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_pen_yards <= 88.17",
-            "feature": "home_pen_yards",
-            "threshold": 88.16650009155273,
-            "value": 78.0,
-            "direction": "left"
-          },
-          {
-            "node": "home_sacks_yards <= 9.17",
-            "feature": "home_sacks_yards",
-            "threshold": 9.166500091552734,
-            "value": 8.667,
-            "direction": "left"
-          },
-          {
-            "leaf": "Home win"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "game": "Falcons @ Seahawks",
-    "date": "2011, Week 4",
-    "true_label": "Away win",
-    "predicted_label": "Home win",
-    "tree_paths": [
-      {
-        "tree_index": 0,
-        "path": [
-          {
-            "node": "home_rush_att <= 32.83",
-            "feature": "home_rush_att",
-            "threshold": 32.833499908447266,
-            "value": 21.667,
-            "direction": "left"
-          },
-          {
-            "node": "away_yards <= 335.17",
-            "feature": "away_yards",
-            "threshold": 335.16650390625,
-            "value": 343.0,
-            "direction": "right"
-          },
-          {
-            "node": "away_drives <= 11.17",
-            "feature": "away_drives",
-            "threshold": 11.166500091552734,
-            "value": 12.667,
-            "direction": "right"
-          },
-          {
-            "node": "away_plays <= 63.83",
-            "feature": "away_plays",
-            "threshold": 63.833499908447266,
-            "value": 64.333,
-            "direction": "right"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 12.17",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 12.166500091552734,
-            "value": 15.333,
+            "value": 371.0,
             "direction": "right"
           },
           {
@@ -816,50 +406,29 @@
             "node": "away_yards <= 298.83",
             "feature": "away_yards",
             "threshold": 298.83349609375,
-            "value": 343.0,
+            "value": 371.0,
             "direction": "right"
           },
           {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 1.333,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 6.83",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 6.833499908447266,
-            "value": 15.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 355.17",
+            "node": "home_yards <= 355.50",
             "feature": "home_yards",
-            "threshold": 355.16650390625,
-            "value": 214.667,
+            "threshold": 355.5,
+            "value": 317.0,
             "direction": "left"
           },
           {
-            "node": "away_sacks_num <= 3.83",
-            "feature": "away_sacks_num",
-            "threshold": 3.833500027656555,
-            "value": 4.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
+            "leaf": "Away win"
           }
         ]
       }
     ]
   },
   {
-    "id": 9,
-    "game": "Bears @ Lions",
-    "date": "2008, Week 5",
-    "true_label": "Away win",
-    "predicted_label": "Home win",
+    "id": 8,
+    "game": "49ers @ Browns",
+    "date": "2023, Week 6",
+    "true_label": "Home win",
+    "predicted_label": "Away win",
     "tree_paths": [
       {
         "tree_index": 0,
@@ -868,39 +437,18 @@
             "node": "home_rush_att <= 32.83",
             "feature": "home_rush_att",
             "threshold": 32.833499908447266,
-            "value": 17.667,
+            "value": 30.333,
             "direction": "left"
           },
           {
             "node": "away_yards <= 335.17",
             "feature": "away_yards",
             "threshold": 335.16650390625,
-            "value": 305.667,
-            "direction": "left"
-          },
-          {
-            "node": "home_first_downs <= 16.17",
-            "feature": "home_first_downs",
-            "threshold": 16.166500091552734,
-            "value": 16.667,
+            "value": 419.0,
             "direction": "right"
           },
           {
-            "node": "away_yards <= 279.17",
-            "feature": "away_yards",
-            "threshold": 279.16650390625,
-            "value": 305.667,
-            "direction": "right"
-          },
-          {
-            "node": "home_sacks_yards <= 6.83",
-            "feature": "home_sacks_yards",
-            "threshold": 6.833499908447266,
-            "value": 19.333,
-            "direction": "right"
-          },
-          {
-            "leaf": "Home win"
+            "leaf": "Away win"
           }
         ]
       },
@@ -911,35 +459,67 @@
             "node": "away_yards <= 298.83",
             "feature": "away_yards",
             "threshold": 298.83349609375,
-            "value": 305.667,
+            "value": 419.0,
             "direction": "right"
           },
           {
-            "node": "home_redzone_att <= 3.83",
-            "feature": "home_redzone_att",
-            "threshold": 3.833500027656555,
-            "value": 1.0,
-            "direction": "left"
-          },
-          {
-            "node": "away_first_downs_from_passing <= 6.83",
-            "feature": "away_first_downs_from_passing",
-            "threshold": 6.833499908447266,
-            "value": 9.333,
-            "direction": "right"
-          },
-          {
-            "node": "home_yards <= 355.17",
+            "node": "home_yards <= 355.50",
             "feature": "home_yards",
-            "threshold": 355.16650390625,
-            "value": 289.0,
+            "threshold": 355.5,
+            "value": 305.0,
             "direction": "left"
           },
           {
-            "node": "away_sacks_num <= 3.83",
-            "feature": "away_sacks_num",
-            "threshold": 3.833500027656555,
-            "value": 2.667,
+            "leaf": "Away win"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "game": "Saints @ Chiefs",
+    "date": "2024, Week 5",
+    "true_label": "Home win",
+    "predicted_label": "Away win",
+    "tree_paths": [
+      {
+        "tree_index": 0,
+        "path": [
+          {
+            "node": "home_rush_att <= 32.83",
+            "feature": "home_rush_att",
+            "threshold": 32.833499908447266,
+            "value": 30.333,
+            "direction": "left"
+          },
+          {
+            "node": "away_yards <= 335.17",
+            "feature": "away_yards",
+            "threshold": 335.16650390625,
+            "value": 339.0,
+            "direction": "right"
+          },
+          {
+            "leaf": "Away win"
+          }
+        ]
+      },
+      {
+        "tree_index": 1,
+        "path": [
+          {
+            "node": "away_yards <= 298.83",
+            "feature": "away_yards",
+            "threshold": 298.83349609375,
+            "value": 339.0,
+            "direction": "right"
+          },
+          {
+            "node": "home_yards <= 355.50",
+            "feature": "home_yards",
+            "threshold": 355.5,
+            "value": 320.0,
             "direction": "left"
           },
           {
