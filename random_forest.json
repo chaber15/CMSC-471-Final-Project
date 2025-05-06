@@ -1,7 +1,7 @@
 [
   {
     "name": "forest",
-    "value": 59.478,
+    "value": 59.983,
     "children": [
       {
         "name": "tree_0",
@@ -62,6 +62,51 @@
             ]
           }
         ]
+      },
+      {
+        "name": "tree_2",
+        "children": [
+          {
+            "name": "away_first_downs_from_passing <= 13.17",
+            "children": [
+              {
+                "name": "away_rush_yards <= 165.17",
+                "children": [
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 1
+                  },
+                  {
+                    "name": "Away win",
+                    "value": 1,
+                    "id": 2
+                  }
+                ]
+              },
+              {
+                "name": "home_redzone_att <= 3.83",
+                "children": [
+                  {
+                    "name": "Away win",
+                    "value": 1,
+                    "id": 3
+                  },
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 4
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Home win",
+        "value": 1,
+        "id": 1
       }
     ]
   }

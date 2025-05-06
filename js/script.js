@@ -2,10 +2,11 @@ let trees = [];
 let currentTreeIndex = 0;
 let homeWins = 0;
 let awayWins = 0;
-let treeOutcomes = [];
 let root = null;
 let test_games = [];
 
+
+// ****** Clean-Up Functions ****** //
 function cleanName(str) {
   if (!str) return "";
   const index = str.indexOf("<");
@@ -13,43 +14,22 @@ function cleanName(str) {
   return cleaned === "Home win" || cleaned === "Away win" ? "" : cleaned;
 }
 
-d3.json("test_games.json")
-  .then((data) => {
-    const dropdown = d3.select("#gameSelector");
-    data.forEach((game) => {
-      const label = `${game.game} (${game.date}) - ${game.true_label}`;
-      dropdown.append("option").attr("value", game.id).text(label);
-      test_games.push(game);
-    });
-  })
-  .catch((error) => {
-    console.error("Failed to load test_games.json:", error);
-  });
-
 function clearHighlights() {
   const g = d3.select("#vis").select("g");
 
-  // Reset node borders
   g.selectAll(".node")
     .select("circle")
     .attr("stroke", "#000")
     .attr("stroke-width", 1.5);
 
-  // Reset links
   g.selectAll(".link").attr("stroke", "#ccc").attr("stroke-width", 3);
 }
+// ****** ------------------ ****** //
 
-function highlightPathToLeaf(test_path) {
-  console.log(test_path);
-  clearHighlights();
+
+function getMatchingLeaf(test_path) {
   if (!root) return;
-
-  const leaves = root.leaves();
-
-  // Find correct leaf:
-  const r = root;
-  let curr = r;
-  console.log(r);
+  let curr = root;
   for (let i = 0; i < test_path.length; i++) {
     children = curr.children;
     for (let c of children) {
@@ -58,42 +38,26 @@ function highlightPathToLeaf(test_path) {
         break;
       }
     }
-    console.log(children);
-    console.log(curr.data.name);
   }
+  return curr; // the final leaf we found after digging down
+}
 
-  const match = curr; // the final leaf we found after digging down
+function highlightPathToLeaf(match) {
+  clearHighlights();
+  if (!root) return;
 
-  //
+  let winner = match.data.name;
 
-  let homeWinCount = 0;
-  let awayWinCount = 0;
+  if (winner === "Home win") homeWins++;
+  else awayWins++;
 
-  let winner = test_path[test_path.length - 1];
 
-  if (winner === "Home win") homeWinCount++;
-  else awayWinCount++;
-
-  // Update legend
-  const legend = d3.select("#legend").html("");
-  legend
-    .append("div")
-    .html(
-      `<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win`
-    );
-  legend
-    .append("div")
-    .html(
-      `<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`
-    );
-
-  // Highlight path to random winning leaf
   const g = d3.select("#vis").select("g");
 
   let current = match;
   const path = [];
   while (current) {
-    path.unshift(current); // root to leaf order
+    path.unshift(current);
     current = current.parent;
   }
 
@@ -145,15 +109,8 @@ function highlightPathToLeaf(test_path) {
       .size();
 
     if (testedTrees === trees.length) {
-      let homeW = 0;
-      let awayW = 0;
 
-      for (const v of treeOutcomes) {
-        if (v === "Home win") homeW++;
-        if (v === "Away win") awayW++;
-      }
-
-      const res = homeW >= awayW ? "HOME WINS!" : "AWAY WINS!";
+      const res = homeWins >= awayWins ? "HOME WINS!" : "AWAY WINS!";
 
       d3.select("#completionMessage").remove(); // Avoid duplicates
       d3.select("#forestSummary")
@@ -310,6 +267,19 @@ function init() {
     localStorage.setItem("depth", 4);
   }
 
+  d3.json("test_games.json")
+    .then((data) => {
+      const dropdown = d3.select("#gameSelector");
+      data.forEach((game) => {
+        const label = `${game.game} (${game.date}) - ${game.true_label}`;
+        dropdown.append("option").attr("value", game.id).text(label);
+        test_games.push(game);
+      });
+    })
+    .catch((error) => {
+      console.error("Failed to load test_games.json:", error);
+    });
+
   d3.json("random_forest.json")
     .then((data) => {
       trees = data[0].children;
@@ -317,36 +287,7 @@ function init() {
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
 
-      // Create tooltip element for summary circles
-      const tooltip = d3
-        .select("body")
-        .append("div")
-        .attr("id", "summaryTooltip")
-        .style("position", "absolute")
-        .style("background", "#fff")
-        .style("border", "1px solid #999")
-        .style("padding", "5px 8px")
-        .style("border-radius", "6px")
-        .style("pointer-events", "none")
-        .style("font-size", "12px")
-        .style("opacity", 0);
-
       const summary = d3.select("#forestSummary").html("");
-
-      // Precompute outcomes for each tree
-      treeOutcomes = trees.map((tree) => {
-        const root = d3.hierarchy(tree);
-        const leaves = root.leaves();
-        let homeWins = 0,
-          awayWins = 0;
-        leaves.forEach((leaf) => {
-          if (leaf.data.name === "Home win") homeWins++;
-          else if (leaf.data.name === "Away win") awayWins++;
-        });
-        if (homeWins > awayWins) return "Home win";
-        else if (awayWins > homeWins) return "Away win";
-        else return "Tie";
-      });
 
       summary
         .selectAll("div")
@@ -396,22 +337,17 @@ document.addEventListener("DOMContentLoaded", () => {
   legend
     .append("div")
     .html(
-      `<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:`
-    );
-  legend
-    .append("div")
-    .html(
-      `<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:`
+      `<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home win</br><span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away win`
     );
 
   nTrees.value = localStorage.getItem("numTrees");
   depth.value = localStorage.getItem("depth");
 
-  nTrees.addEventListener("change", function (event) {
+  nTrees.addEventListener("change", (event) => {
     localStorage.setItem("numTrees", event.target.value);
   });
 
-  depth.addEventListener("change", function (event) {
+  depth.addEventListener("change", (event) => {
     localStorage.setItem("depth", event.target.value);
   });
 
@@ -426,31 +362,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < gameTreePath.length; i++) {
       if (i == gameTreePath.length - 1) {
-        // hit leaf
         test_path.push(gameTreePath[i].leaf);
       } else {
         test_path.push(gameTreePath[i].node);
       }
     }
 
-    highlightPathToLeaf(test_path);
+    const match = getMatchingLeaf(test_path);
+
+    highlightPathToLeaf(match);
   });
 
   document.getElementById("backBtn").addEventListener("click", () => {
     if (currentTreeIndex > 0) {
       currentTreeIndex--;
-      const legend = d3.select("#legend").html("");
-      legend
-        .append("div")
-        .html(
-          `<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:`
-        );
-      legend
-        .append("div")
-        .html(
-          `<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:`
-        );
-
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
     }
@@ -459,18 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("nextBtn").addEventListener("click", () => {
     if (currentTreeIndex < trees.length - 1) {
       currentTreeIndex++;
-      const legend = d3.select("#legend").html("");
-      legend
-        .append("div")
-        .html(
-          `<span style="display:inline-block;width:20px;height:20px;background:#69b3a2;border:1px solid #000;margin-right:5px;"></span>Home wins:`
-        );
-      legend
-        .append("div")
-        .html(
-          `<span style="display:inline-block;width:20px;height:20px;background:#ff6347;border:1px solid #000;margin-right:5px;"></span>Away wins:`
-        );
-
       renderSingleTree(trees[currentTreeIndex]);
       updateButtons();
     }
@@ -516,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </html>
 `;
 
-    const popup = window.open("", "Explanation", "width=600,height=500");
+    const popup = window.open("decription.html", "Explanation", "width=600,height=500");
     popup.document.write(explanationHTML);
     popup.document.close();
   });
