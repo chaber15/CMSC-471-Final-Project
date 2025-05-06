@@ -26,7 +26,9 @@ function clearHighlights() {
 }
 // ****** ------------------ ****** //
 
+// ****** Path Functions ****** //
 
+// Get The Leaf the Model Predicted
 function getMatchingLeaf(test_path) {
   if (!root) return;
   let curr = root;
@@ -39,9 +41,10 @@ function getMatchingLeaf(test_path) {
       }
     }
   }
-  return curr; // the final leaf we found after digging down
+  return curr; 
 }
 
+// Highlight path to the leaf the model predicted
 function highlightPathToLeaf(match) {
   clearHighlights();
   if (!root) return;
@@ -50,7 +53,6 @@ function highlightPathToLeaf(match) {
 
   if (winner === "Home win") homeWins++;
   else awayWins++;
-
 
   const g = d3.select("#vis").select("g");
 
@@ -61,7 +63,6 @@ function highlightPathToLeaf(match) {
     current = current.parent;
   }
 
-  // Animate the path step-by-step
   path.forEach((node, i) => {
     setTimeout(() => {
       g.selectAll(".node")
@@ -76,7 +77,7 @@ function highlightPathToLeaf(match) {
           .attr("stroke", "gold")
           .attr("stroke-width", 4);
       }
-    }, i * 600); // delay per step
+    }, i * 600);
   });
 
   // After animation finishes, update summary + final result
@@ -112,7 +113,7 @@ function highlightPathToLeaf(match) {
 
       const res = homeWins >= awayWins ? "HOME WINS!" : "AWAY WINS!";
 
-      d3.select("#completionMessage").remove(); // Avoid duplicates
+      d3.select("#completionMessage").remove();
       d3.select("#forestSummary")
         .append("div")
         .attr("id", "completionMessage")
@@ -125,15 +126,17 @@ function highlightPathToLeaf(match) {
         .style("text-align", "center")
         .text(res);
     }
-  }, path.length * 600); // Wait until path animation finishes
+  }, path.length * 600);
 }
+// ****** -------------- ****** //
+
 
 // Function to render a single decision tree visualization
 function renderSingleTree(treeData) {
   clearHighlights();
   const maxTreeWidth = 1300;
   const treeHeight = 600;
-  const timing = 800; // Animation timing
+  const timing = 800; 
   home_color = "#3CB371";
   away_color = "#ff6347";
 
@@ -250,14 +253,15 @@ function renderSingleTree(treeData) {
   }
 }
 
-// Update navigation button states
 function updateButtons() {
   document.getElementById("backBtn").disabled = currentTreeIndex === 0;
   document.getElementById("nextBtn").disabled =
     currentTreeIndex === trees.length - 1;
 }
 
-// Initialization function - loads trees and sets up UI
+// ****** Initialization Functions ****** //
+
+// Initialization function - loads data and sets up UI
 function init() {
   if (localStorage.getItem("numTrees") === null) {
     localStorage.setItem("numTrees", 5);
@@ -309,6 +313,7 @@ function init() {
       console.error("Error loading random_forest.json:", error)
     );
 }
+// ****** ------------------------ ****** //
 
 // Sends a request to backend to retrain Random Forest model
 async function getData(n, d) {
@@ -325,10 +330,8 @@ async function getData(n, d) {
   }
 }
 
-// Start initial loading
 document.addEventListener("load", init);
 
-// Setup DOM event listeners after page load
 document.addEventListener("DOMContentLoaded", () => {
   const nTrees = document.getElementById("yearSlider");
   const depth = document.getElementById("depthSlider");
