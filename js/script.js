@@ -392,6 +392,105 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.getElementById("toggleModelExplanation").addEventListener("click", () => {
+    const explanationHTML = `
+  <html>
+    <head>
+      <title>Explanation</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          padding: 20px;
+          line-height: 1.6;
+          background-color: #333232;
+          color: white;
+        }
+        h3 {
+          color: white;
+        }
+        ol li {
+          margin-bottom: 10px;
+        }
+        strong {
+          color: #ccc;
+        }
+        p {
+          margin-top: 1rem;
+        }
+      </style>
+    </head>
+    <body>
+      <h3>🤔 What Is a Random Forest? </h3>
+      <p>
+        A <strong>Random Forest</strong> is an ensemble machine learning model made up of many <strong>decision trees</strong>.
+        It combines the predictions of multiple trees to produce more accurate and stable results than a single decision tree.
+      </p>
+      <h3>🌱How the Model Is Built
+      <ol>
+        <li>Data Subsets (Bootstrap Sampling):
+        Each tree in the forest is trained on a different random subset of the data, chosen with replacement (called bootstrapping).
+        This ensures diversity between trees, which helps the forest generalize better to new data.</li>
+        <li>Feature Subsets (Random Features):
+        When each node in a tree decides how to split the data, it only considers a random subset of the features. 
+        This further increases the diversity between trees and reduces overfitting</li>
+      </ol>
+    </body>
+  </html>
+`;
+const popup = window.open("decription.html", "Explanation", "width=600,height=500");
+    popup.document.write(explanationHTML);
+    popup.document.close();
+  });
+
+  document.getElementById("toggleTrainingExplanation").addEventListener("click", () => {
+    const explanationHTML = `
+  <html>
+    <head>
+      <title>Explanation</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+          line-height: 1.6;
+          background-color: #333232;
+          color: white;
+        }
+        h3 {
+          color: white;
+        }
+        ol li {
+          margin-bottom: 10px;
+        }
+        strong {
+          color: #ccc;
+        }
+        p {
+          margin-top: 1rem;
+        }
+      </style>
+    </head>
+    <body>
+      <h3> 🏋️‍♂️ Effect of Number of Trees and Depth on Accuracy</h3>
+      <h4> Number of Trees</h4>
+      <ul>
+        <li><strong>More trees</strong> generally improve accuracy by reducing variance (i.e., the risk of overfitting to noise in a single tree).</li>
+        <li>However, beyond a certain point, adding more trees offers <strong>diminishing returns</strong> and just increases computational cost.</li>
+      </ul>
+      <h4> Depth of Trees</h4>
+      <ul>
+        <li><strong>Deeper trees</strong> capture more complext patterns but may overfit the training data.</li>
+        <li><strong>Shallower trees</strong> are faster and generally better but might <strong>underfit</strong></li>
+        <li>The right depth balances bias and variance to optomizr performance.</li>
+      </ul>
+    </body>
+  </html>
+`;
+const popup = window.open("decription.html", "Explanation", "width=600,height=500");
+    popup.document.write(explanationHTML);
+    popup.document.close();
+  });
+
   document.getElementById("toggleExplanation").addEventListener("click", () => {
     const descCol = document.querySelector(".descCol");
 

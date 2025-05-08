@@ -11,6 +11,7 @@
     <div class="title">
       <h1>Final Project Mockup: Fourth and Forecast</h1>
       <h3>Caleb Haber, Caleb Holland, Benjamin Johnson</h3>
+      <button id="toggleModelExplanation">Random Forrest Explanation</button>
     </div>
 
     <div class="sliders">
@@ -68,6 +69,9 @@
         </select>
       </div>
       <button id="test" class="trainBtn">Test</button>
+      <button id="toggleTrainingExplanation">Training Explanation</button>
+
+
 
       
     </div>
@@ -76,7 +80,7 @@
       <div class="container">
         <div class="row">
           <div class="row2">
-            <button id="toggleExplanation">Show Explanation</button>
+            <button id="toggleExplanation">Tree Explanation</button>
           </div>
 
           <div id="controls">
@@ -94,32 +98,32 @@
 
         <div class="visRow">
           <div class="descCol">
-            <h3>🧠 How Are These Decision Trees Making Predictions?</h3>
-            <ol>
+            <h3>🌳 How Trees Are Trained - Entropy & Splits</h3>
+            <p> Each decision tree is trained to split the data based on <strong>entropy</strong></p>
+            <ul>
               <li>
-                <strong>Input Features:</strong> Each tree receives statistical
-                features for upcoming games — such as team passsing yards, first
-                downs, penalties, etc.
+                <strong>Entropy</strong> measures the "impuruty" or disorder of a dataset.
               </li>
               <li>
-                <strong>Node Splitting:</strong> Each node checks a condition
-                (e.g., "home team passing yards ≤ 204.5"). If true, it follows
-                the left branch; if false, the right.
+                At each node, the tree chooses the feauture and threshold that results in the greatest information gain, or the largest reduction in entropy.
               </li>
               <li>
-                <strong>Leaf Nodes:</strong> At the bottom of each branch, the
-                tree outputs a prediction (either "Home win" or "Away win").
+                This process repeats until the tree reaches a maximum depth, or akk samples in a node belong to the same class.
+              </li>
+            </ul>
+            <h3>🧠 How Predictions Are Made</h3>
+            <ul>
+              <li>
+                Each tree independently makes a prediction based on the input features(e.g., "Home win" or "Away win").
               </li>
               <li>
-                <strong>Forest Voting:</strong> Each tree votes. The majority
-                vote across all trees becomes the final prediction.
+                The <strong>Random Forest</strong> aggregates these predicitions using majority voting:
+                <ul>
+                  <li>If mose trees say "Home win," the overall predicition is "Home win."</li>
+                  <li>This makes the model robust to errors by individual trees.</li>
+                </ul> 
               </li>
-            </ol>
-            <p>
-              This visualization helps show the decision-making logic of the
-              model, not just the outcome — making machine learning more
-              transparent and insightful.
-            </p>
+            </ul>
           </div>
           <div class="visCol">
             <div

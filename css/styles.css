@@ -167,6 +167,17 @@ button {
   margin-bottom: 2vh;
 }
 
+#toggleTrainingExplanation {
+  color: black;;
+  width: 15.5%;
+}
+
+#toggleModelExplanation {
+  color: black;
+  margin-bottom: 2vh;
+  
+}
+
 .descCol {
   display: none;
   transition: all 0.3s ease-in-out;
