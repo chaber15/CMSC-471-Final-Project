@@ -453,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </body>
   </html>
 `;
-const popup = window.open("decription.html", "Explanation", "width=600,height=500");
+const popup = window.open("decription.html", "Explanation", "width=750,height=650");
     popup.document.write(explanationHTML);
     popup.document.close();
   });
@@ -466,6 +466,7 @@ const popup = window.open("decription.html", "Explanation", "width=600,height=50
       <style>
         body {
           font-family: Arial, sans-serif;
+          font-size: 14px;
           padding: 20px;
           line-height: 1.6;
           background-color: #333232;
@@ -517,10 +518,21 @@ const popup = window.open("decription.html", "Explanation", "width=600,height=50
             without becoming too slow or overfitting the data.
           </li>
         </ul>
+
+        <h3>🔥 Visualizing Accuracy Across Trees and Depths</h3>
+        <p>
+          The heatmap below shows how accuracy changes depending on two key parameters: the number of trees in the forest, 
+          and the maximum depth each tree is allowed to grow. Darker shades of red represent higher accuracy.
+        </p>
+        <p>
+          This kind of visualization helps us find the “sweet spot” — a combination of tree count and depth that gives strong performance 
+          without making the model overly complex or slow.
+        </p>
+        <img src="heatmap.png" alt="Random Forest Accuracy Heatmap" style="max-width:800px; width:100%; border:0; margin-top:10px;">
       </body>
   </html>
 `;
-const popup = window.open("decription.html", "Explanation", "width=600,height=500");
+const popup = window.open("decription.html", "Explanation", "width=1200,height=1200");
     popup.document.write(explanationHTML);
     popup.document.close();
   });
@@ -565,7 +577,7 @@ const popup = window.open("decription.html", "Explanation", "width=600,height=50
   </html>
 `;
 
-    const popup = window.open("decription.html", "Explanation", "width=600,height=500");
+    const popup = window.open("decription.html", "Explanation", "width=1200,height=550");
     popup.document.write(explanationHTML);
     popup.document.close();
   });
