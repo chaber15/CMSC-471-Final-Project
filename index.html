@@ -69,10 +69,7 @@
         </select>
       </div>
       <button id="test" class="trainBtn">Test</button>
-      <button id="toggleTrainingExplanation">Training Explanation</button>
-
-
-
+      <button id="toggleTrainingExplanation">How It Works</button>
       
     </div>
 
@@ -80,7 +77,7 @@
       <div class="container">
         <div class="row">
           <div class="row2">
-            <button id="toggleExplanation">Tree Explanation</button>
+            <button id="toggleExplanation">?</button>
           </div>
 
           <div id="controls">
@@ -92,38 +89,36 @@
           <div class="row2">
               <div id="legend"></div>
           </div>
-
-         
         </div>
 
         <div class="visRow">
           <div class="descCol">
-            <h3>🌳 How Trees Are Trained - Entropy & Splits</h3>
-            <p> Each decision tree is trained to split the data based on <strong>entropy</strong></p>
-            <ul>
-              <li>
-                <strong>Entropy</strong> measures the "impuruty" or disorder of a dataset.
-              </li>
-              <li>
-                At each node, the tree chooses the feauture and threshold that results in the greatest information gain, or the largest reduction in entropy.
-              </li>
-              <li>
-                This process repeats until the tree reaches a maximum depth, or akk samples in a node belong to the same class.
-              </li>
-            </ul>
-            <h3>🧠 How Predictions Are Made</h3>
-            <ul>
-              <li>
-                Each tree independently makes a prediction based on the input features(e.g., "Home win" or "Away win").
-              </li>
-              <li>
-                The <strong>Random Forest</strong> aggregates these predicitions using majority voting:
-                <ul>
-                  <li>If mose trees say "Home win," the overall predicition is "Home win."</li>
-                  <li>This makes the model robust to errors by individual trees.</li>
-                </ul> 
-              </li>
-            </ul>
+            <h3>🌳 How Are Trees Trained?</h3>
+            <p>
+              Each decision tree in a random forest is trained by breaking the data into smaller and smaller pieces. 
+              At each step, the tree decides which question (or “split”) best divides the data.
+            </p>
+            <p>
+              To make that decision, it uses a concept called <strong>entropy</strong>, which measures the amount of disorder or uncertainty. 
+              A good split is one that reduces entropy — in other words, it creates groups where the data is more “pure” 
+              (where most of the examples in a group belong to the same class).
+            </p>
+            <p>
+              The tree continues splitting the data until it reaches a stopping point, such as a maximum depth, a minimum number of samples, 
+              or when the groups are already pure.
+            </p>
+
+            <h3>🧠 How Predictions Work</h3>
+            <p>
+              Once trained, each decision tree makes a prediction by following a series of questions down the tree. 
+              This is like tracing a path through a flowchart based on the input features. 
+              When the path ends at a <strong>leaf node</strong>, the tree returns a prediction — for example, "Home win" or "Away win".
+            </p>
+            <p>
+              In a random forest, all the trees make their predictions independently. Then the forest combines them using a 
+              <strong>majority vote</strong> (for classification tasks) or an <strong>average</strong> (for regression tasks). 
+              The final prediction is the result of this collective decision.
+            </p>
           </div>
           <div class="visCol">
             <div

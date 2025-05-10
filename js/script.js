@@ -420,21 +420,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       </style>
     </head>
-    <body>
-      <h3>🤔 What Is a Random Forest? </h3>
+      <body>
+      <h3>🌲 What Is a Random Forest?</h3>
       <p>
-        A <strong>Random Forest</strong> is an ensemble machine learning model made up of many <strong>decision trees</strong>.
-        It combines the predictions of multiple trees to produce more accurate and stable results than a single decision tree.
+        Imagine you want to predict whether an NFL team will win its next game. One way to do this is to ask an expert, 
+        but what if you asked <strong>100 different experts</strong>, each looking at the data in a slightly different way — 
+        and then went with the majority opinion?
       </p>
-      <h3>🌱How the Model Is Built
-      <ol>
-        <li>Data Subsets (Bootstrap Sampling):
-        Each tree in the forest is trained on a different random subset of the data, chosen with replacement (called bootstrapping).
-        This ensures diversity between trees, which helps the forest generalize better to new data.</li>
-        <li>Feature Subsets (Random Features):
-        When each node in a tree decides how to split the data, it only considers a random subset of the features. 
-        This further increases the diversity between trees and reduces overfitting</li>
-      </ol>
+      <p>
+        That’s the basic idea behind a <strong>random forest</strong>.
+      </p>
+      <p>
+        A random forest is a machine learning method that combines the predictions of many smaller models 
+        called <strong>decision trees</strong>. Each decision tree is like a flowchart that makes decisions by asking questions — 
+        for example: “Was the team’s quarterback rating above 90?” → yes or no → “Was the defense ranked in the top 10?” → and so on.
+      </p>
+      <p>
+        Each tree looks at different parts of the data and makes its own prediction. On their own, trees can be 
+        <em>simple and sometimes wrong</em>, but when you combine many trees, they form a <strong>“forest”</strong> 
+        that tends to be <strong>much more accurate</strong>.
+      </p>
+      <h3>🌱 Why "Random"?</h3>
+      <ul>
+        <li><strong>Random data samples:</strong> Each tree is trained on a random subset of the data (this is called bootstrapping).</li>
+        <li><strong>Random features:</strong> At each decision point, the tree considers only a random set of features 
+          (instead of all features) to decide how to split the data.</li>
+      </ul>
+      <p>
+        This randomness helps the trees make different mistakes, which balances out when they vote. 
+        The final prediction is made by a <strong>majority vote</strong> across all trees.
+      </p>
     </body>
   </html>
 `;
@@ -470,20 +485,39 @@ const popup = window.open("decription.html", "Explanation", "width=600,height=50
         }
       </style>
     </head>
-    <body>
-      <h3> 🏋️‍♂️ Effect of Number of Trees and Depth on Accuracy</h3>
-      <h4> Number of Trees</h4>
-      <ul>
-        <li><strong>More trees</strong> generally improve accuracy by reducing variance (i.e., the risk of overfitting to noise in a single tree).</li>
-        <li>However, beyond a certain point, adding more trees offers <strong>diminishing returns</strong> and just increases computational cost.</li>
-      </ul>
-      <h4> Depth of Trees</h4>
-      <ul>
-        <li><strong>Deeper trees</strong> capture more complext patterns but may overfit the training data.</li>
-        <li><strong>Shallower trees</strong> are faster and generally better but might <strong>underfit</strong></li>
-        <li>The right depth balances bias and variance to optomizr performance.</li>
-      </ul>
-    </body>
+      <body>
+        <h3>🧪 How a Tree Tests Input Data</h3>
+        <p>
+          Once trained, a decision tree makes predictions by asking a series of yes-or-no questions about the input data. 
+          Each node in the tree checks a specific feature — for example, “Is the number of passing yards greater than 250?”
+        </p>
+        <p>
+          Based on the answer, the input travels down the left or right branch. This continues until it reaches a 
+          <strong>leaf node</strong>, which holds the tree's prediction (like "Home win" or "Away win").
+        </p>
+        <p>
+          This process is fast and efficient, and each tree’s path depends on the patterns it learned from training data.
+        </p>
+
+        <h3>📈 Number of Trees and Tree Depth</h3>
+        <ul>
+          <li>
+            <strong>More Trees = More Accuracy (Usually):</strong> 
+            Adding more trees improves prediction accuracy because each tree contributes a unique perspective. 
+            The forest “averages out” their mistakes. But adding too many can slow down training and prediction.
+          </li>
+          <li>
+            <strong>Tree Depth = Complexity:</strong> 
+            Deeper trees can capture more detailed patterns in the data — but if they go too deep, they might memorize the training data 
+            instead of generalizing, which leads to <em>overfitting</em>.
+          </li>
+          <li>
+            <strong>Finding the Balance:</strong> 
+            A well-performing random forest has enough trees and the right depth to capture patterns 
+            without becoming too slow or overfitting the data.
+          </li>
+        </ul>
+      </body>
   </html>
 `;
 const popup = window.open("decription.html", "Explanation", "width=600,height=500");
