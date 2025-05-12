@@ -392,6 +392,151 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.getElementById("toggleModelExplanation").addEventListener("click", () => {
+    const explanationHTML = `
+  <html>
+    <head>
+      <title>Explanation</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          padding: 20px;
+          line-height: 1.6;
+          background-color: #333232;
+          color: white;
+        }
+        h3 {
+          color: white;
+        }
+        ol li {
+          margin-bottom: 10px;
+        }
+        strong {
+          color: #ccc;
+        }
+        p {
+          margin-top: 1rem;
+        }
+      </style>
+    </head>
+      <body>
+      <h3>🌲 What Is a Random Forest?</h3>
+      <p>
+        Imagine you want to predict whether an NFL team will win its next game. One way to do this is to ask an expert, 
+        but what if you asked <strong>100 different experts</strong>, each looking at the data in a slightly different way — 
+        and then went with the majority opinion?
+      </p>
+      <p>
+        That’s the basic idea behind a <strong>random forest</strong>.
+      </p>
+      <p>
+        A random forest is a machine learning method that combines the predictions of many smaller models 
+        called <strong>decision trees</strong>. Each decision tree is like a flowchart that makes decisions by asking questions — 
+        for example: “Was the team’s quarterback rating above 90?” → yes or no → “Was the defense ranked in the top 10?” → and so on.
+      </p>
+      <p>
+        Each tree looks at different parts of the data and makes its own prediction. On their own, trees can be 
+        <em>simple and sometimes wrong</em>, but when you combine many trees, they form a <strong>“forest”</strong> 
+        that tends to be <strong>much more accurate</strong>.
+      </p>
+      <h3>🌱 Why "Random"?</h3>
+      <ul>
+        <li><strong>Random data samples:</strong> Each tree is trained on a random subset of the data (this is called bootstrapping).</li>
+        <li><strong>Random features:</strong> At each decision point, the tree considers only a random set of features 
+          (instead of all features) to decide how to split the data.</li>
+      </ul>
+      <p>
+        This randomness helps the trees make different mistakes, which balances out when they vote. 
+        The final prediction is made by a <strong>majority vote</strong> across all trees.
+      </p>
+    </body>
+  </html>
+`;
+const popup = window.open("decription.html", "Explanation", "width=750,height=650");
+    popup.document.write(explanationHTML);
+    popup.document.close();
+  });
+
+  document.getElementById("toggleTrainingExplanation").addEventListener("click", () => {
+    const explanationHTML = `
+  <html>
+    <head>
+      <title>Explanation</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          padding: 20px;
+          line-height: 1.6;
+          background-color: #333232;
+          color: white;
+        }
+        h3 {
+          color: white;
+        }
+        ol li {
+          margin-bottom: 10px;
+        }
+        strong {
+          color: #ccc;
+        }
+        p {
+          margin-top: 1rem;
+        }
+      </style>
+    </head>
+      <body>
+        <h3>🧪 How a Tree Tests Input Data</h3>
+        <p>
+          Once trained, a decision tree makes predictions by asking a series of yes-or-no questions about the input data. 
+          Each node in the tree checks a specific feature — for example, “Is the number of passing yards greater than 250?”
+        </p>
+        <p>
+          Based on the answer, the input travels down the left or right branch. This continues until it reaches a 
+          <strong>leaf node</strong>, which holds the tree's prediction (like "Home win" or "Away win").
+        </p>
+        <p>
+          This process is fast and efficient, and each tree’s path depends on the patterns it learned from training data.
+        </p>
+
+        <h3>📈 Number of Trees and Tree Depth</h3>
+        <ul>
+          <li>
+            <strong>More Trees = More Accuracy (Usually):</strong> 
+            Adding more trees improves prediction accuracy because each tree contributes a unique perspective. 
+            The forest “averages out” their mistakes. But adding too many can slow down training and prediction.
+          </li>
+          <li>
+            <strong>Tree Depth = Complexity:</strong> 
+            Deeper trees can capture more detailed patterns in the data — but if they go too deep, they might memorize the training data 
+            instead of generalizing, which leads to <em>overfitting</em>.
+          </li>
+          <li>
+            <strong>Finding the Balance:</strong> 
+            A well-performing random forest has enough trees and the right depth to capture patterns 
+            without becoming too slow or overfitting the data.
+          </li>
+        </ul>
+
+        <h3>🔥 Visualizing Accuracy Across Trees and Depths</h3>
+        <p>
+          The heatmap below shows how accuracy changes depending on two key parameters: the number of trees in the forest, 
+          and the maximum depth each tree is allowed to grow. Darker shades of red represent higher accuracy.
+        </p>
+        <p>
+          This kind of visualization helps us find the “sweet spot” — a combination of tree count and depth that gives strong performance 
+          without making the model overly complex or slow.
+        </p>
+        <img src="heatmap.png" alt="Random Forest Accuracy Heatmap" style="max-width:800px; width:100%; border:0; margin-top:10px;">
+      </body>
+  </html>
+`;
+const popup = window.open("decription.html", "Explanation", "width=1200,height=1200");
+    popup.document.write(explanationHTML);
+    popup.document.close();
+  });
+
   document.getElementById("toggleExplanation").addEventListener("click", () => {
     const descCol = document.querySelector(".descCol");
 
@@ -432,7 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </html>
 `;
 
-    const popup = window.open("decription.html", "Explanation", "width=600,height=500");
+    const popup = window.open("decription.html", "Explanation", "width=1200,height=550");
     popup.document.write(explanationHTML);
     popup.document.close();
   });

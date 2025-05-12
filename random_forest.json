@@ -1,7 +1,7 @@
 [
   {
     "name": "forest",
-    "value": 58.467,
+    "value": 60.32,
     "children": [
       {
         "name": "tree_0",
@@ -258,6 +258,326 @@
                     ]
                   }
                 ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_4",
+        "children": [
+          {
+            "name": "away_pass_yards <= 202.83",
+            "children": [
+              {
+                "name": "away_rush_yards <= 144.83",
+                "children": [
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 1
+                  },
+                  {
+                    "name": "home_interceptions <= 0.50",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 3
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 4
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "home_first_downs <= 16.83",
+                "children": [
+                  {
+                    "name": "home_interceptions <= 2.50",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 5
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 6
+                      }
+                    ]
+                  },
+                  {
+                    "name": "away_yards <= 405.50",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 7
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 8
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_5",
+        "children": [
+          {
+            "name": "home_first_downs <= 17.83",
+            "children": [
+              {
+                "name": "away_yards <= 344.33",
+                "children": [
+                  {
+                    "name": "away_drives <= 10.83",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 1
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Away win",
+                    "value": 1,
+                    "id": 3
+                  }
+                ]
+              },
+              {
+                "name": "Home win",
+                "value": 1,
+                "id": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_6",
+        "children": [
+          {
+            "name": "away_score_rolling <= 18.83",
+            "children": [
+              {
+                "name": "Home win",
+                "value": 1,
+                "id": 1
+              },
+              {
+                "name": "home_rush_att <= 30.50",
+                "children": [
+                  {
+                    "name": "home_yards <= 370.83",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 5
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 6
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 7
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_7",
+        "children": [
+          {
+            "name": "away_first_downs_from_passing <= 12.42",
+            "children": [
+              {
+                "name": "home_sacks_num <= 3.58",
+                "children": [
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 1
+                  },
+                  {
+                    "name": "away_pass_yards <= 196.00",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 3
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 4
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "home_rush_att <= 29.83",
+                "children": [
+                  {
+                    "name": "away_plays <= 63.17",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 5
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 6
+                      }
+                    ]
+                  },
+                  {
+                    "name": "home_first_downs_from_rushing <= 8.50",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 7
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 8
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_8",
+        "children": [
+          {
+            "name": "away_yards <= 317.17",
+            "children": [
+              {
+                "name": "home_first_downs_from_passing <= 10.50",
+                "children": [
+                  {
+                    "name": "away_score_rolling <= 17.50",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 1
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 3
+                  }
+                ]
+              },
+              {
+                "name": "home_first_downs <= 17.83",
+                "children": [
+                  {
+                    "name": "Away win",
+                    "value": 1,
+                    "id": 5
+                  },
+                  {
+                    "name": "home_first_downs_from_penalty <= 3.50",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 7
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 8
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tree_9",
+        "children": [
+          {
+            "name": "home_yards <= 355.50",
+            "children": [
+              {
+                "name": "away_sacks_num <= 1.83",
+                "children": [
+                  {
+                    "name": "home_def_st_td <= 0.83",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 1
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 3
+                  }
+                ]
+              },
+              {
+                "name": "Home win",
+                "value": 1,
+                "id": 5
               }
             ]
           }
