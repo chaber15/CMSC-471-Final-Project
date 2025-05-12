@@ -163,8 +163,10 @@ button {
 }
 
 #toggleExplanation {
+
   color: black;
   margin-bottom: 2vh;
+  
 }
 
 #toggleTrainingExplanation {
@@ -172,6 +174,15 @@ button {
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
+  border-radius: 50%;
+  background-color: #333232;
+  border: 2px solid whitesmoke;
+  color: whitesmoke;
+}
+
+#toggleTrainingExplanation:hover {
+  background-color: lightgreen;
+  color: black
 }
 
 #accuracy{
@@ -202,3 +213,10 @@ h3 {
   margin-top: 2px;
 }
 
+.dropdown {
+  background-color: #333232;
+  color: whitesmoke;
+  font-weight: bold;
+  border: 2px solid whitesmoke;
+  border-radius: 5px;
+}
