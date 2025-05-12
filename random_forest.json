@@ -1,7 +1,7 @@
 [
   {
     "name": "forest",
-    "value": 59.983,
+    "value": 58.467,
     "children": [
       {
         "name": "tree_0",
@@ -13,21 +13,41 @@
                 "name": "away_yards <= 335.17",
                 "children": [
                   {
-                    "name": "Home win",
-                    "value": 1,
-                    "id": 1
+                    "name": "home_first_downs <= 16.17",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 1
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 2
+                      }
+                    ]
                   },
                   {
-                    "name": "Away win",
-                    "value": 1,
-                    "id": 2
+                    "name": "away_sacks_yards <= 28.83",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 3
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 4
+                      }
+                    ]
                   }
                 ]
               },
               {
                 "name": "Home win",
                 "value": 1,
-                "id": 3
+                "id": 5
               }
             ]
           }
@@ -40,22 +60,52 @@
             "name": "away_yards <= 298.83",
             "children": [
               {
-                "name": "Home win",
-                "value": 1,
-                "id": 1
-              },
-              {
-                "name": "home_yards <= 355.50",
+                "name": "home_yards <= 325.83",
                 "children": [
                   {
-                    "name": "Away win",
-                    "value": 1,
-                    "id": 3
+                    "name": "away_first_downs_from_passing <= 11.50",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 1
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 2
+                      }
+                    ]
                   },
                   {
                     "name": "Home win",
                     "value": 1,
-                    "id": 4
+                    "id": 3
+                  }
+                ]
+              },
+              {
+                "name": "home_rush_att <= 33.50",
+                "children": [
+                  {
+                    "name": "home_score_rolling <= 21.17",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 5
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 6
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Home win",
+                    "value": 1,
+                    "id": 7
                   }
                 ]
               }
@@ -78,24 +128,54 @@
                     "id": 1
                   },
                   {
-                    "name": "Away win",
-                    "value": 1,
-                    "id": 2
+                    "name": "home_score_rolling <= 20.17",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 3
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 4
+                      }
+                    ]
                   }
                 ]
               },
               {
-                "name": "home_redzone_att <= 3.83",
+                "name": "home_rush_att <= 33.50",
                 "children": [
                   {
-                    "name": "Away win",
-                    "value": 1,
-                    "id": 3
+                    "name": "away_rush_att <= 22.17",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 5
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 6
+                      }
+                    ]
                   },
                   {
-                    "name": "Home win",
-                    "value": 1,
-                    "id": 4
+                    "name": "home_pen_yards <= 33.33",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 7
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 8
+                      }
+                    ]
                   }
                 ]
               }
@@ -104,9 +184,84 @@
         ]
       },
       {
-        "name": "Home win",
-        "value": 1,
-        "id": 1
+        "name": "tree_3",
+        "children": [
+          {
+            "name": "home_rush_att <= 32.50",
+            "children": [
+              {
+                "name": "away_third_down_comp <= 3.83",
+                "children": [
+                  {
+                    "name": "home_pass_yards <= 198.50",
+                    "children": [
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 1
+                      },
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "away_first_downs <= 19.50",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 3
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 4
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "home_yards <= 410.17",
+                "children": [
+                  {
+                    "name": "away_rush_yards <= 138.67",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 5
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 6
+                      }
+                    ]
+                  },
+                  {
+                    "name": "home_plays <= 76.67",
+                    "children": [
+                      {
+                        "name": "Home win",
+                        "value": 1,
+                        "id": 7
+                      },
+                      {
+                        "name": "Away win",
+                        "value": 1,
+                        "id": 8
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }
