@@ -157,7 +157,7 @@ button {
 
 .trainBtn {
   background-color: rgb(47, 129, 47);
-  margin-right: 2.5vw;
+  margin-right: 1vw;
   padding: 10px;
   width: 10%;
 }
@@ -168,8 +168,15 @@ button {
 }
 
 #toggleTrainingExplanation {
-  color: black;;
-  width: 15.5%;
+  color: black;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#accuracy{
+  width: 50%;
+  align-self: center;
 }
 
 #toggleModelExplanation {

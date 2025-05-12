@@ -118,9 +118,9 @@ function highlightPathToLeaf(match) {
         .append("div")
         .attr("id", "completionMessage")
         .style("display", "inline-block")
-        .style("margin-left", "15px")
+        .style("margin-left", "10px")
         .style("margin-top", "15px")
-        .style("color", "#4CAF50")
+        .style("color", res === "HOME WINS!" ? "#3CB371": "#ff6347")
         .style("font-weight", "bold")
         .style("font-size", "18px")
         .style("text-align", "center")
@@ -286,6 +286,7 @@ function init() {
 
   d3.json("random_forest.json")
     .then((data) => {
+      localStorage.setItem('acc', data[0].value);
       trees = data[0].children;
       currentTreeIndex = 0;
       renderSingleTree(trees[currentTreeIndex]);
@@ -345,6 +346,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   nTrees.value = localStorage.getItem("numTrees");
   depth.value = localStorage.getItem("depth");
+
+  document.getElementById('accuracy').innerHTML = `</br><strong>Model Accuracy</strong>: ${localStorage.getItem("acc")}`
 
   nTrees.addEventListener("change", (event) => {
     localStorage.setItem("numTrees", event.target.value);
