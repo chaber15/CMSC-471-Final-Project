@@ -5,7 +5,6 @@ let awayWins = 0;
 let root = null;
 let test_games = [];
 
-
 // ****** Clean-Up Functions ****** //
 function cleanName(str) {
   if (!str) return "";
@@ -41,7 +40,7 @@ function getMatchingLeaf(test_path) {
       }
     }
   }
-  return curr; 
+  return curr;
 }
 
 // Highlight path to the leaf the model predicted
@@ -110,7 +109,6 @@ function highlightPathToLeaf(match) {
       .size();
 
     if (testedTrees === trees.length) {
-
       const res = homeWins >= awayWins ? "HOME WINS!" : "AWAY WINS!";
 
       d3.select("#completionMessage").remove();
@@ -120,7 +118,7 @@ function highlightPathToLeaf(match) {
         .style("display", "inline-block")
         .style("margin-left", "10px")
         .style("margin-top", "15px")
-        .style("color", res === "HOME WINS!" ? "#3CB371": "#ff6347")
+        .style("color", res === "HOME WINS!" ? "#3CB371" : "#ff6347")
         .style("font-weight", "bold")
         .style("font-size", "18px")
         .style("text-align", "center")
@@ -130,13 +128,12 @@ function highlightPathToLeaf(match) {
 }
 // ****** -------------- ****** //
 
-
 // Function to render a single decision tree visualization
 function renderSingleTree(treeData) {
   clearHighlights();
   const maxTreeWidth = 1300;
   const treeHeight = 600;
-  const timing = 800; 
+  const timing = 800;
   home_color = "#3CB371";
   away_color = "#ff6347";
 
@@ -271,60 +268,55 @@ function init() {
     localStorage.setItem("depth", 4);
   }
 
-  d3.json("test_games.json")
-    .then((data) => {
-      const dropdown = d3.select("#gameSelector");
-      data.forEach((game) => {
-        const label = `${game.game} (${game.date}) - ${game.true_label}`;
-        dropdown.append("option").attr("value", game.id).text(label);
-        test_games.push(game);
-      });
-    })
-    .catch((error) => {
-      console.error("Failed to load test_games.json:", error);
-    });
+  data = JSON.parse(localStorage.getItem("test"));
 
-  d3.json("random_forest.json")
-    .then((data) => {
-      localStorage.setItem('acc', data[0].value);
-      trees = data[0].children;
-      currentTreeIndex = 0;
-      renderSingleTree(trees[currentTreeIndex]);
-      updateButtons();
+  const dropdown = d3.select("#gameSelector");
+  dropdown.selectAll("option").remove(); // Clear existing options
 
-      const summary = d3.select("#forestSummary").html("");
+  data.forEach((game) => {
+  const label = `${game.game} (${game.date}) - ${game.true_label}`;
+  dropdown.append("option").attr("value", game.id).text(label);
+  test_games[game.id] = game;  // <-- add this line
+});
 
-      summary
-        .selectAll("div")
-        .data(trees)
-        .enter()
-        .append("div")
-        .attr("class", "summaryCircle")
-        .style("width", "40px")
-        .style("height", "40px")
-        .style("border-radius", "50%")
-        .style("background", "#eee")
-        .style("border", "1px solid #333")
-        .style("display", "inline-block")
-        .style("margin", "0 6px")
-        .style("margin-top", "20px")
-        .style("opacity", 0.5);
-    })
-    .catch((error) =>
-      console.error("Error loading random_forest.json:", error)
-    );
+  data2 = JSON.parse(localStorage.getItem("trees"));
+  localStorage.setItem("acc", data2[0].value);
+  trees = data2[0].children;
+  currentTreeIndex = 0;
+  renderSingleTree(trees[currentTreeIndex]);
+  updateButtons();
+
+  const summary = d3.select("#forestSummary").html("");
+
+  summary
+    .selectAll("div")
+    .data(trees)
+    .enter()
+    .append("div")
+    .attr("class", "summaryCircle")
+    .style("width", "40px")
+    .style("height", "40px")
+    .style("border-radius", "50%")
+    .style("background", "#eee")
+    .style("border", "1px solid #333")
+    .style("display", "inline-block")
+    .style("margin", "0 6px")
+    .style("margin-top", "20px")
+    .style("opacity", 0.5);
 }
 // ****** ------------------------ ****** //
 
 // Sends a request to backend to retrain Random Forest model
 async function getData(n, d) {
-  const url = `http://localhost:5000/train?numTrees=${n}&depth=${d}`;
+  const url = `https://cmsc-471-final-project.onrender.com/train?numTrees=${n}&depth=${d}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
     const json = await response.json();
+    localStorage.setItem("trees", JSON.stringify(json.trees));
+    localStorage.setItem("test", JSON.stringify(json.test));
     console.log(json);
   } catch (error) {
     console.error(error.message);
@@ -347,7 +339,11 @@ document.addEventListener("DOMContentLoaded", () => {
   nTrees.value = localStorage.getItem("numTrees");
   depth.value = localStorage.getItem("depth");
 
-  document.getElementById('accuracy').innerHTML = `</br><strong>Model Accuracy</strong>: ${localStorage.getItem("acc")}`
+  document.getElementById(
+    "accuracy"
+  ).innerHTML = `</br><strong>Model Accuracy</strong>: ${localStorage.getItem(
+    "acc"
+  )}`;
 
   nTrees.addEventListener("change", (event) => {
     localStorage.setItem("numTrees", event.target.value);
@@ -357,8 +353,15 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("depth", event.target.value);
   });
 
-  document.getElementById("train").addEventListener("click", () => {
-    getData(localStorage.getItem("numTrees"), localStorage.getItem("depth"));
+  document.getElementById("train").addEventListener("click", async () => {
+    await getData(
+      localStorage.getItem("numTrees"),
+      localStorage.getItem("depth")
+    );
+
+    setTimeout(() => {
+      init();
+    }, 0);
   });
 
   document.getElementById("test").addEventListener("click", () => {
@@ -395,8 +398,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document.getElementById("toggleModelExplanation").addEventListener("click", () => {
-    const explanationHTML = `
+  document
+    .getElementById("toggleModelExplanation")
+    .addEventListener("click", () => {
+      const explanationHTML = `
   <html>
     <head>
       <title>Explanation</title>
@@ -456,13 +461,19 @@ document.addEventListener("DOMContentLoaded", () => {
     </body>
   </html>
 `;
-const popup = window.open("decription.html", "Explanation", "width=750,height=650");
-    popup.document.write(explanationHTML);
-    popup.document.close();
-  });
+      const popup = window.open(
+        "decription.html",
+        "Explanation",
+        "width=750,height=650"
+      );
+      popup.document.write(explanationHTML);
+      popup.document.close();
+    });
 
-  document.getElementById("toggleTrainingExplanation").addEventListener("click", () => {
-    const explanationHTML = `
+  document
+    .getElementById("toggleTrainingExplanation")
+    .addEventListener("click", () => {
+      const explanationHTML = `
   <html>
     <head>
       <title>Explanation</title>
@@ -535,10 +546,14 @@ const popup = window.open("decription.html", "Explanation", "width=750,height=65
       </body>
   </html>
 `;
-const popup = window.open("decription.html", "Explanation", "width=1200,height=1200");
-    popup.document.write(explanationHTML);
-    popup.document.close();
-  });
+      const popup = window.open(
+        "decription.html",
+        "Explanation",
+        "width=1200,height=1200"
+      );
+      popup.document.write(explanationHTML);
+      popup.document.close();
+    });
 
   document.getElementById("toggleExplanation").addEventListener("click", () => {
     const descCol = document.querySelector(".descCol");
@@ -580,7 +595,11 @@ const popup = window.open("decription.html", "Explanation", "width=1200,height=1
   </html>
 `;
 
-    const popup = window.open("decription.html", "Explanation", "width=1200,height=550");
+    const popup = window.open(
+      "decription.html",
+      "Explanation",
+      "width=1200,height=550"
+    );
     popup.document.write(explanationHTML);
     popup.document.close();
   });

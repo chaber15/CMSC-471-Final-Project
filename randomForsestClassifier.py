@@ -108,8 +108,8 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='./data/nfl_games_with
     }]
     cleaned = [clean_tree(tree) for tree in forest_json]
 
-    with open('random_forest.json', 'w') as f:
-        json.dump(cleaned, f, indent=2)
+    # with open('random_forest.json', 'w') as f:
+    #     json.dump(cleaned, f, indent=2)
 
     # === FILE 2: Export example games with prediction paths ===
     
@@ -154,8 +154,10 @@ def train_and_export_forest(depth=3, n_trees=10, csv_path='./data/nfl_games_with
 
         test_data.append(game_info)
 
-    with open("test_games.json", "w") as f:
-        json.dump(test_data, f, indent=2)
+    # with open("test_games.json", "w") as f:
+    #     json.dump(test_data, f, indent=2)
+
+    return cleaned, test_data
 
 # Run the function
 train_and_export_forest()
