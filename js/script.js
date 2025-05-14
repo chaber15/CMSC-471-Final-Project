@@ -442,6 +442,8 @@ document.addEventListener("DOMContentLoaded", () => {
         A random forest is a machine learning method that combines the predictions of many smaller models 
         called <strong>decision trees</strong>. Each decision tree is like a flowchart that makes decisions by asking questions — 
         for example: “Was the team’s quarterback rating above 90?” → yes or no → “Was the defense ranked in the top 10?” → and so on.
+        This information is gathered by using a football dataset, which contains information about stats like the the ones mentioned above.
+        The goal is for the tree to make a informed prediction about the outcome of the game (e.g., "Home win" or "Away win").
       </p>
       <p>
         Each tree looks at different parts of the data and makes its own prediction. On their own, trees can be 
